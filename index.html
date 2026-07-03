@@ -3,41 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ИМИДЖ Консалт-ресурс | Вступление в СРО, проектирование, изыскания</title>
-    <!-- Подключение современного шрифта -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>СРО-Эксперт | Помощь вступления в СРО за 1 день</title>
+    <meta name="description" content="Гарантированное вступление в СРО строителей, проектировщиков и изыскателей за 24 часа. Без скрытых платежей, специалисты для НРС.">
     
+    <!-- Подключение шрифтов -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Подключение иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        /* --- ПЕРЕМЕННЫЕ ЦВЕТОВОЙ ПАЛИТРЫ (Синий и Оранжевый) --- */
+        /* ========================
+           CSS ПЕРЕМЕННЫЕ (ДИЗАЙН СИСТЕМА)
+           ======================== */
         :root {
-            --primary-blue: #1e3a8a; /* Глубокий синий */
-            --light-blue: #eff6ff; /* Светло-синий для фона */
-            --accent-orange: #f97316; /* Яркий оранжевый */
-            --hover-orange: #ea580c; /* Темно-оранжевый для наведения */
-            --text-dark: #1f2937;
-            --text-light: #6b7280;
-            --white: #ffffff;
+            /* Цвета */
+            --primary-color: #0F3460; /* Глубокий синий (доверие, B2B) */
+            --primary-light: #16213E;
+            --accent-color: #F9A826; /* Оранжевый (призыв к действию) */
+            --accent-hover: #E3931D;
+            --bg-body: #FFFFFF;
+            --bg-section: #F4F7F6;
+            --text-main: #2D3748;
+            --text-muted: #718096;
+            --text-light: #FFFFFF;
+            --border-color: #E2E8F0;
+            
+            /* Размеры и отступы */
+            --container-width: 1200px;
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --transition: all 0.3s ease;
         }
 
-        /* --- БАЗОВЫЕ НАСТРОЙКИ --- */
+        /* ========================
+           БАЗОВЫЕ НАСТРОЙКИ
+           ======================== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html {
-            /* Плавная прокрутка между разделами */
-            scroll-behavior: smooth; 
-        }
-
         body {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-body);
             line-height: 1.6;
-            background-color: var(--white);
-            /* Отступ сверху, чтобы контент не прятался под фиксированным меню */
-            padding-top: 80px; 
+            -webkit-font-smoothing: antialiased;
+            padding-top: 80px; /* Отступ под фиксированную шапку */
         }
 
         a {
@@ -45,486 +64,772 @@
             color: inherit;
         }
 
-        /* --- НАВИГАЦИОННОЕ МЕНЮ (Липкое) --- */
-        header {
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary-light);
+        }
+
+        /* ========================
+           КНОПКИ И ФОРМЫ (CRO ЭЛЕМЕНТЫ)
+           ======================== */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--text-light);
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: 0 4px 6px rgba(249, 168, 38, 0.3);
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(249, 168, 38, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            transform: none;
+            box-shadow: none;
+        }
+
+        input[type="text"], input[type="tel"] {
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            font-size: 16px;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(15, 52, 96, 0.1);
+        }
+
+        /* ========================
+           HEADER (ШАПКА)
+           ======================== */
+        .header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 80px;
-            background-color: var(--white);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
             z-index: 1000;
+            height: 80px;
             display: flex;
             align-items: center;
-            justify-content: center;
         }
 
-        .nav-container {
-            width: 100%;
-            max-width: 1200px;
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-        }
-
-        .logo span {
-            color: var(--accent-orange);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        nav ul li a {
-            font-weight: 600;
-            color: var(--text-dark);
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        /* Анимация подчеркивания при наведении в меню */
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--accent-orange);
-            transition: width 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: var(--primary-blue);
-        }
-
-        nav ul li a:hover::after {
             width: 100%;
         }
 
-        /* --- ГЛАВНЫЙ РАЗДЕЛ (Hero) --- */
-        .hero {
-            background: linear-gradient(135deg, rgba(30, 58, 138, 0.95), rgba(30, 58, 138, 0.8)), url('https://images.unsplash.com/photo-1541888081622-6b9578ebec60?auto=format&fit=crop&q=80&w=1920') center/cover;
-            height: calc(100vh - 80px);
-            min-height: 500px;
+        .logo-area {
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--white);
-            padding: 0 20px;
-        }
-
-        .hero-content {
-            max-width: 800px;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--accent-orange);
-            color: var(--white);
-            padding: 15px 35px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
-            border: none;
-            cursor: pointer;
-        }
-
-        /* Анимация кнопки при наведении */
-        .btn:hover {
-            background-color: var(--hover-orange);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(249, 115, 22, 0.6);
-        }
-
-        /* --- ОБЩИЕ СТИЛИ ДЛЯ СЕКЦИЙ --- */
-        section {
-            padding: 80px 20px;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            color: var(--primary-blue);
-            margin-bottom: 50px;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent-orange);
-            margin: 15px auto 0;
-            border-radius: 2px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* --- О КОМПАНИИ --- */
-        .about-bg {
-            background-color: var(--light-blue);
-        }
-
-        .about-content {
-            display: flex;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .about-text {
-            flex: 1;
-        }
-
-        .about-text p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-            color: var(--text-light);
-        }
-
-        .about-stats {
-            flex: 1;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
             gap: 20px;
         }
 
-        .stat-card {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-            border-bottom: 4px solid var(--primary-blue);
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: -0.5px;
+        }
+        
+        .logo span {
+            color: var(--accent-color);
         }
 
-        .stat-card:hover {
-            transform: translateY(-5px);
-            border-bottom-color: var(--accent-orange);
+        .descriptor {
+            font-size: 14px;
+            color: var(--text-muted);
+            border-left: 1px solid var(--border-color);
+            padding-left: 20px;
+            max-width: 200px;
         }
 
-        .stat-number {
-            font-size: 2.5rem;
+        .contact-area {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .phone {
+            font-size: 18px;
             font-weight: 700;
-            color: var(--accent-orange);
+            color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        /* --- УСЛУГИ И СТОИМОСТЬ --- */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            background-color: var(--white);
-            border: 1px solid #e5e7eb;
-            border-radius: 10px;
-            padding: 40px 30px;
-            text-align: center;
-            transition: all 0.3s ease;
+        /* ========================
+           HERO СЕКЦИЯ (ГЛАВНЫЙ ЭКРАН)
+           ======================== */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
+            color: var(--text-light);
+            padding: 100px 0;
             position: relative;
             overflow: hidden;
         }
 
-        /* Эффект наведения на карточку услуги */
-        .service-card:hover {
-            box-shadow: 0 20px 40px rgba(30, 58, 138, 0.1);
-            transform: translateY(-10px);
-            border-color: var(--accent-orange);
+        /* Декоративный паттерн */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 70%);
+            z-index: 1;
         }
 
-        .service-card h3 {
-            font-size: 1.3rem;
-            color: var(--primary-blue);
+        .hero-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 650px;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            margin-bottom: 25px;
+            letter-spacing: -1px;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-features {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .hero-features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .hero-features i {
+            color: var(--accent-color);
+            font-size: 20px;
+        }
+
+        /* Форма захвата */
+        .hero-form-wrapper {
+            background-color: var(--bg-body);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            width: 100%;
+            max-width: 400px;
+            color: var(--text-main);
+        }
+
+        .hero-form-wrapper h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .hero-form-wrapper p {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .hero-form .btn {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .privacy-text {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 15px;
+            display: block;
+        }
+
+        /* ========================
+           ВИДЫ СРО (КАРТОЧКИ)
+           ======================== */
+        .sro-types {
+            background-color: var(--bg-body);
+        }
+
+        .sro-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .sro-card {
+            background: var(--bg-section);
+            padding: 40px 30px;
+            border-radius: var(--radius-md);
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .sro-card:hover {
+            transform: translateY(-10px);
+            background: var(--bg-body);
+            border-color: var(--border-color);
+            box-shadow: var(--shadow-md);
+        }
+
+        .sro-card i {
+            font-size: 50px;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+        }
+
+        .sro-card h3 {
+            font-size: 24px;
             margin-bottom: 15px;
         }
 
-        .service-card p {
-            color: var(--text-light);
-            margin-bottom: 25px;
-            font-size: 0.95rem;
+        .sro-card p {
+            color: var(--text-muted);
+            font-size: 15px;
         }
 
-        .price {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-orange);
-            display: block;
+        /* ========================
+           ПРЕИМУЩЕСТВА
+           ======================== */
+        .benefits {
+            background-color: var(--bg-section);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .benefit-item {
+            text-align: center;
+        }
+
+        .icon-wrapper {
+            width: 80px;
+            height: 80px;
+            background-color: var(--bg-body);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .benefit-item:hover .icon-wrapper {
+            background-color: var(--primary-color);
+        }
+
+        .benefit-item:hover .icon-wrapper i {
+            color: var(--bg-body);
+        }
+
+        .icon-wrapper i {
+            font-size: 32px;
+            color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .benefit-item h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .benefit-item p {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* ========================
+           КАК МЫ РАБОТАЕМ (ШАГИ)
+           ======================== */
+        .steps {
+            background-color: var(--bg-body);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            position: relative;
+        }
+
+        .step-item {
+            position: relative;
+            padding: 30px;
+            background: var(--bg-section);
+            border-radius: var(--radius-md);
+            text-align: left;
+        }
+
+        .step-number {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--border-color);
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            line-height: 1;
+            opacity: 0.5;
+        }
+
+        .step-item h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+            margin-top: 10px;
+        }
+
+        .step-item p {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* ========================
+           CTA (ПРИЗЫВ К ДЕЙСТВИЮ)
+           ======================== */
+        .cta {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 80px 0;
+            background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+        }
+
+        .cta h2 {
+            color: var(--text-light);
             margin-bottom: 20px;
         }
 
-        .service-card .btn-small {
-            background-color: transparent;
-            color: var(--primary-blue);
-            border: 2px solid var(--primary-blue);
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: all 0.3s;
-            cursor: pointer;
+        .cta p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
         }
 
-        .service-card:hover .btn-small {
-            background-color: var(--primary-blue);
-            color: var(--white);
+        .cta .btn {
+            font-size: 18px;
+            padding: 18px 40px;
         }
 
-        /* --- КОНТАКТЫ --- */
-        .contacts-bg {
-            background-color: var(--primary-blue);
-            color: var(--white);
+        /* ========================
+           ФУТЕР
+           ======================== */
+        .footer {
+            background-color: var(--primary-light);
+            color: var(--text-light);
+            padding: 60px 0 30px;
         }
 
-        .contacts-bg .section-title {
-            color: var(--white);
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 40px;
         }
 
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            text-align: center;
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
         }
 
-        .contact-item {
-            padding: 30px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 10px;
-            transition: background 0.3s ease;
-        }
-
-        .contact-item:hover {
-            background: rgba(255,255,255,0.2);
-        }
-
-        .contact-item h4 {
-            color: var(--accent-orange);
-            font-size: 1.2rem;
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-light);
             margin-bottom: 15px;
+            display: block;
         }
 
-        /* --- ПОДВАЛ --- */
-        footer {
-            background-color: #0f172a;
-            color: #9ca3af;
-            text-align: center;
-            padding: 20px;
-            font-size: 0.9rem;
+        .footer-logo span {
+            color: var(--accent-color);
         }
 
-        /* --- АДАПТИВНОСТЬ (Mobile) --- */
+        .footer-col p {
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .footer-col h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .footer-contacts li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .footer-contacts i {
+            color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: rgba(255,255,255,0.5);
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-bottom a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: underline;
+        }
+
+        /* ========================
+           АДАПТИВНОСТЬ (MEDIA QUERIES)
+           ======================== */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-text {
+                max-width: 100%;
+            }
+
+            .hero-features {
+                align-items: center;
+            }
+            
+            .descriptor {
+                display: none; /* Скрываем дескриптор на планшетах для экономии места */
+            }
+        }
+
         @media (max-width: 768px) {
             body {
                 padding-top: 70px;
             }
-            header {
+
+            .header {
                 height: 70px;
             }
-            .nav-container {
-                flex-direction: column;
-                justify-content: center;
-            }
-            nav ul {
-                display: none; /* В реальном проекте тут был бы бургер, для простоты скрываем на узких экранах, оставляя скролл */
-            }
-            /* Простая замена бургеру для лендинга-одностраничника */
-            .nav-container {
-                flex-direction: row;
-            }
-            nav {
-                overflow-x: auto;
-                max-width: 60%;
-            }
-            nav ul {
-                display: flex;
-                gap: 15px;
-            }
-            nav ul li a {
-                font-size: 0.8rem;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
+
+            h2 {
+                font-size: 28px;
+                margin-bottom: 40px;
             }
 
-            .about-content {
+            .hero-text h1 {
+                font-size: 32px;
+            }
+
+            .contact-area .btn-outline {
+                display: none; /* Прячем кнопку в шапке на мобилках */
+            }
+            
+            .phone {
+                font-size: 16px;
+            }
+
+            section {
+                padding: 50px 0;
+            }
+
+            .footer-content {
                 flex-direction: column;
             }
             
-            .section-title {
-                font-size: 2rem;
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
             }
         }
-        
+
         @media (max-width: 480px) {
-            nav { display: none; } /* Скрываем меню на совсем маленьких экранах для чистоты UI */
-            .logo { font-size: 1.2rem; }
+            .hero-text h1 {
+                font-size: 28px;
+            }
+            
+            .hero-form-wrapper {
+                padding: 25px 20px;
+            }
+            
+            .logo-area .logo {
+                font-size: 20px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Навигационное меню -->
-    <header>
-        <div class="nav-container">
-            <div class="logo">ИМИДЖ <span>Консалт-ресурс</span></div>
-            <nav>
-                <ul>
-                    <li><a href="#hero">Главная</a></li>
-                    <li><a href="#about">О компании</a></li>
-                    <li><a href="#services">Услуги и цены</a></li>
-                    <li><a href="#contacts">Контакты</a></li>
-                </ul>
-            </nav>
+    <!-- Шапка (Sticky Header) -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo-area">
+                <a href="#" class="logo">СРО-<span>Эксперт</span></a>
+                <div class="descriptor">Помощь вступления в СРО за 1 день</div>
+            </div>
+            <div class="contact-area">
+                <a href="tel:88001234567" class="phone"><i class="fa-solid fa-phone"></i> 8 (800) 123-45-67</a>
+                <a href="#hero-form" class="btn btn-outline">Заказать звонок</a>
+            </div>
         </div>
     </header>
 
-    <!-- Главный экран (Hero) -->
-    <section id="hero" class="hero">
-        <div class="hero-content">
-            <h1>Допуски СРО, проектирование и изыскания — быстро и с гарантией</h1>
-            <p>Профессиональное сопровождение строительного бизнеса. Экономим ваше время и деньги. Решаем задачи любой сложности "под ключ".</p>
-            <a href="#services" class="btn">Получить консультацию</a>
-        </div>
-    </section>
-
-    <!-- Раздел О компании -->
-    <section id="about" class="about-bg">
-        <div class="container">
-            <h2 class="section-title">О нашей компании</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p><strong>«ИМИДЖ Консалт-ресурс»</strong> — это команда экспертов в области строительного консалтинга, лицензирования и сертификации.</p>
-                    <p>Наша история началась более 10 лет назад с небольшой группы юристов. Сегодня мы являемся лидерами рынка, обеспечивая надежное сопровождение компаний при вступлении в СРО, прохождении проверок, а также в сфере проектирования и инженерных изысканий.</p>
-                    <p>Мы берем на себя всю бюрократию, чтобы вы могли сосредоточиться на главном — развитии вашего бизнеса.</p>
+    <!-- Главный экран (Hero Section) -->
+    <main>
+        <section class="hero">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h1>Гарантированное вступление в СРО по всей РФ за 24 часа</h1>
+                    <p>Без скрытых платежей и бумажной волокиты. Внесем специалистов в НРС. Подготовим допуск «под ключ» для участия в тендерах.</p>
+                    <ul class="hero-features">
+                        <li><i class="fa-solid fa-check-circle"></i> Работаем строго по закону (ФЗ-315, ГрК РФ)</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Оплата взносов напрямую в СРО без посредников</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Решаем проблему нехватки специалистов</li>
+                    </ul>
                 </div>
-                <div class="about-stats">
-                    <div class="stat-card">
-                        <div class="stat-number">10+</div>
-                        <div>Лет на рынке</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">2500+</div>
-                        <div>Довольных клиентов</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">100%</div>
-                        <div>Гарантия результата</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">24/7</div>
-                        <div>Поддержка экспертов</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Раздел Услуги и Стоимость -->
-    <section id="services">
-        <div class="container">
-            <h2 class="section-title">Наши услуги и стоимость</h2>
-            <div class="services-grid">
                 
-                <!-- Карточка 1 -->
-                <div class="service-card">
-                    <h3>Вступление в СРО Строителей</h3>
-                    <p>Полное сопровождение процесса. Подготовка документов, подбор специалистов НОСТРОЙ. Допуск за 1 день.</p>
-                    <span class="price">от 50 000 ₽</span>
-                    <button class="btn-small">Оставить заявку</button>
+                <!-- Лид-форма (CRO элемент) -->
+                <div class="hero-form-wrapper" id="hero-form">
+                    <h3>Узнать точную стоимость</h3>
+                    <p>Оставьте заявку, и мы бесплатно сделаем расчет всех взносов под ваш вид деятельности</p>
+                    <form class="hero-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Спасибо! Заявка успешно отправлена.');">
+                        <input type="text" name="name" placeholder="Ваше имя" required>
+                        <input type="tel" name="phone" placeholder="Ваш телефон" required>
+                        <button type="submit" class="btn">Получить расчет</button>
+                        <span class="privacy-text">Нажимая на кнопку, вы даете согласие на обработку персональных данных.</span>
+                    </form>
                 </div>
-
-                <!-- Карточка 2 -->
-                <div class="service-card">
-                    <h3>СРО Проектировщиков</h3>
-                    <p>Помощь проектным организациям. Внесение специалистов в реестр НОПРИЗ, прохождение проверок.</p>
-                    <span class="price">от 45 000 ₽</span>
-                    <button class="btn-small">Оставить заявку</button>
-                </div>
-
-                <!-- Карточка 3 -->
-                <div class="service-card">
-                    <h3>Инженерные изыскания</h3>
-                    <p>Комплексные инженерные изыскания для строительства. Геодезия, геология, экология.</p>
-                    <span class="price">от 45 000 ₽</span>
-                    <button class="btn-small">Оставить заявку</button>
-                </div>
-
-                <!-- Карточка 4 -->
-                <div class="service-card">
-                    <h3>Повышение квалификации</h3>
-                    <p>Обучение специалистов для СРО. Дистанционный формат, выдача удостоверений установленного образца.</p>
-                    <span class="price">от 5 000 ₽</span>
-                    <button class="btn-small">Оставить заявку</button>
-                </div>
-
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Раздел Контакты -->
-    <section id="contacts" class="contacts-bg">
+        <!-- С какими СРО работаем -->
+        <section class="sro-types">
+            <div class="container">
+                <h2>С какими СРО мы работаем</h2>
+                <div class="sro-grid">
+                    <!-- Карточка 1 -->
+                    <div class="sro-card">
+                        <i class="fa-solid fa-building"></i>
+                        <h3>СРО Строителей</h3>
+                        <p>Обязательно для генподрядчиков и строительных компаний, планирующих участвовать в тендерах, заключать контракты от 3 млн рублей или работать на особо опасных объектах.</p>
+                    </div>
+                    <!-- Карточка 2 -->
+                    <div class="sro-card">
+                        <i class="fa-solid fa-pen-ruler"></i>
+                        <h3>СРО Проектировщиков</h3>
+                        <p>Для архитектурных бюро и компаний, разрабатывающих проектно-сметную документацию. Необходимо для обеспечения безопасности объектов капитального строительства.</p>
+                    </div>
+                    <!-- Карточка 3 -->
+                    <div class="sro-card">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                        <h3>СРО Изыскателей</h3>
+                        <p>Для организаций, проводящих инженерные изыскания перед началом строительства. Гарантирует качество исследований почвы, геодезии и геологии на участке.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Преимущества (Почему мы) -->
+        <section class="benefits">
+            <div class="container">
+                <h2>Почему нам доверяют бизнес?</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="icon-wrapper">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h4>100% гарантия результата</h4>
+                        <p>Работаем по договору. Мы берем оплату за свои услуги только после успешного прохождения проверки документов.</p>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="icon-wrapper">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h4>Выписка в день обращения</h4>
+                        <p>Благодаря налаженным процессам, вы получите выписку из реестра Ростехнадзора и НОСТРОЙ/НОПРИЗ уже через 24 часа.</p>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="icon-wrapper">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <h4>Специалисты для НРС</h4>
+                        <p>Не хватает двух инженеров в штате? Мы легально предоставим квалифицированных специалистов для выполнения требований.</p>
+                    </div>
+
+                    <div class="benefit-item">
+                        <div class="icon-wrapper">
+                            <i class="fa-solid fa-file-invoice-dollar"></i>
+                        </div>
+                        <h4>Без скрытых платежей</h4>
+                        <p>Смета фиксируется до подписания договора. Взносы в компфонд регламентированы законом — никаких комиссий с нашей стороны.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Как мы работаем -->
+        <section class="steps">
+            <div class="container">
+                <h2>Как получить допуск за 4 шага</h2>
+                <div class="steps-grid">
+                    <div class="step-item">
+                        <div class="step-number">01</div>
+                        <h4>Оставляете заявку</h4>
+                        <p>Мы связываемся с вами, проводим бесплатный аудит компании и определяем вид СРО, который нужен для ваших задач.</p>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">02</div>
+                        <h4>Готовим документы</h4>
+                        <p>Наши юристы подбирают надежное СРО в вашем регионе и формируют идеальный пакет документов. От вас нужен минимум бумаг.</p>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">03</div>
+                        <h4>Оплата взносов</h4>
+                        <p>Вы оплачиваете взнос в компенсационный фонд и членские взносы напрямую на расчетный счет выбранного СРО.</p>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">04</div>
+                        <h4>Получаете допуск</h4>
+                        <p>Вы получаете оригинал выписки из реестра членов СРО. Теперь вы можете легально брать крупные объекты и выигрывать тендеры.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Нижний CTA-блок -->
+        <section class="cta">
+            <div class="container">
+                <h2>Горят сроки по тендеру?</h2>
+                <p>Оставьте заявку прямо сейчас, и мы запустим процесс оформления документов уже через 15 минут. Не упустите выгодный контракт из-за бюрократии!</p>
+                <a href="#hero-form" class="btn">Получить бесплатную консультацию</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Подвал (Footer) -->
+    <footer class="footer">
         <div class="container">
-            <h2 class="section-title">Свяжитесь с нами</h2>
-            <div class="contact-info">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <a href="#" class="footer-logo">СРО-<span>Эксперт</span></a>
+                    <p>Профессиональное сопровождение строительного бизнеса по всей территории Российской Федерации.</p>
+                </div>
                 
-                <div class="contact-item">
-                    <h4>📍 Местоположение</h4>
-                    <p>г. Москва, ул. Деловой центр, д. 15<br>Бизнес-центр «Премьер», офис 404</p>
+                <div class="footer-col">
+                    <h4>Контакты</h4>
+                    <ul class="footer-contacts">
+                        <li><i class="fa-solid fa-phone"></i> 8 (800) 123-45-67 (Бесплатно по РФ)</li>
+                        <li><i class="fa-solid fa-envelope"></i> info@sro-expert.ru</li>
+                        <li><i class="fa-solid fa-location-dot"></i> г. Москва, Пресненская наб., 12</li>
+                    </ul>
                 </div>
-
-                <div class="contact-item">
-                    <h4>🕒 Часы работы</h4>
-                    <p>Понедельник - Пятница:<br>09:00 - 18:00<br>Суббота - Воскресенье: выходной</p>
+                
+                <div class="footer-col">
+                    <h4>Режим работы</h4>
+                    <ul class="footer-contacts">
+                        <li>Пн-Пт: 09:00 - 19:00</li>
+                        <li>Сб-Вс: Выходной</li>
+                        <li>Прием заявок на сайте: 24/7</li>
+                    </ul>
                 </div>
-
-                <div class="contact-item">
-                    <h4>📞 Связь</h4>
-                    <p>Телефон: +7 (495) 123-45-67<br>Email: info@image-consult.ru</p>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    &copy; 2023 СРО-Эксперт. Все права защищены. Информация на сайте не является публичной офертой.
                 </div>
-
+                <div class="legal-links">
+                    <a href="#">Политика конфиденциальности</a>
+                </div>
             </div>
         </div>
-    </section>
-
-    <!-- Подвал -->
-    <footer>
-        <p>&copy; 2023 ИМИДЖ Консалт-ресурс. Все права защищены. Обращаем ваше внимание на то, что данный интернет-сайт носит исключительно информационный характер.</p>
     </footer>
 
 </body>
