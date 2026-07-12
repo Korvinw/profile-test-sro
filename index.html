@@ -1,839 +1,318 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>СРО-Эксперт | Помощь вступления в СРО за 1 день</title>
-    <meta name="description" content="Гарантированное вступление в СРО строителей, проектировщиков и изыскателей за 24 часа. Без скрытых платежей, специалисты для НРС.">
-    
-    <!-- Подключение шрифтов -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Подключение иконок -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        /* ========================
-           CSS ПЕРЕМЕННЫЕ (ДИЗАЙН СИСТЕМА)
-           ======================== */
-        :root {
-            /* Цвета */
-            --primary-color: #0F3460; /* Глубокий синий (доверие, B2B) */
-            --primary-light: #16213E;
-            --accent-color: #F9A826; /* Оранжевый (призыв к действию) */
-            --accent-hover: #E3931D;
-            --bg-body: #FFFFFF;
-            --bg-section: #F4F7F6;
-            --text-main: #2D3748;
-            --text-muted: #718096;
-            --text-light: #FFFFFF;
-            --border-color: #E2E8F0;
-            
-            /* Размеры и отступы */
-            --container-width: 1200px;
-            --radius-sm: 4px;
-            --radius-md: 8px;
-            --radius-lg: 12px;
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-            --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
-            --transition: all 0.3s ease;
-        }
-
-        /* ========================
-           БАЗОВЫЕ НАСТРОЙКИ
-           ======================== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-main);
-            background-color: var(--bg-body);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            padding-top: 80px; /* Отступ под фиксированную шапку */
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        .container {
-            max-width: var(--container-width);
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 80px 0;
-        }
-
-        h1, h2, h3, h4 {
-            line-height: 1.2;
-            font-weight: 700;
-        }
-
-        h2 {
-            font-size: 36px;
-            text-align: center;
-            margin-bottom: 50px;
-            color: var(--primary-light);
-        }
-
-        /* ========================
-           КНОПКИ И ФОРМЫ (CRO ЭЛЕМЕНТЫ)
-           ======================== */
-        .btn {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: var(--text-light);
-            padding: 14px 28px;
-            font-size: 16px;
-            font-weight: 600;
-            border-radius: var(--radius-sm);
-            border: none;
-            cursor: pointer;
-            text-align: center;
-            transition: var(--transition);
-            box-shadow: 0 4px 6px rgba(249, 168, 38, 0.3);
-        }
-
-        .btn:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(249, 168, 38, 0.4);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-            box-shadow: none;
-        }
-
-        .btn-outline:hover {
-            background-color: var(--primary-color);
-            color: var(--text-light);
-            transform: none;
-            box-shadow: none;
-        }
-
-        input[type="text"], input[type="tel"] {
-            width: 100%;
-            padding: 16px;
-            margin-bottom: 15px;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-sm);
-            font-size: 16px;
-            font-family: inherit;
-            transition: var(--transition);
-        }
-
-        input:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(15, 52, 96, 0.1);
-        }
-
-        /* ========================
-           HEADER (ШАПКА)
-           ======================== */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            box-shadow: var(--shadow-sm);
-            z-index: 1000;
-            height: 80px;
-            display: flex;
-            align-items: center;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-        }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--primary-color);
-            letter-spacing: -0.5px;
-        }
-        
-        .logo span {
-            color: var(--accent-color);
-        }
-
-        .descriptor {
-            font-size: 14px;
-            color: var(--text-muted);
-            border-left: 1px solid var(--border-color);
-            padding-left: 20px;
-            max-width: 200px;
-        }
-
-        .contact-area {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .phone {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--primary-light);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* ========================
-           HERO СЕКЦИЯ (ГЛАВНЫЙ ЭКРАН)
-           ======================== */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
-            color: var(--text-light);
-            padding: 100px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Декоративный паттерн */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 70%);
-            z-index: 1;
-        }
-
-        .hero-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 50px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-text {
-            flex: 1;
-            max-width: 650px;
-        }
-
-        .hero-text h1 {
-            font-size: 48px;
-            margin-bottom: 25px;
-            letter-spacing: -1px;
-        }
-
-        .hero-text p {
-            font-size: 18px;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-
-        .hero-features {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .hero-features li {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 16px;
-            font-weight: 500;
-        }
-
-        .hero-features i {
-            color: var(--accent-color);
-            font-size: 20px;
-        }
-
-        /* Форма захвата */
-        .hero-form-wrapper {
-            background-color: var(--bg-body);
-            padding: 40px;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
-            width: 100%;
-            max-width: 400px;
-            color: var(--text-main);
-        }
-
-        .hero-form-wrapper h3 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .hero-form-wrapper p {
-            font-size: 14px;
-            color: var(--text-muted);
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .hero-form .btn {
-            width: 100%;
-            margin-top: 10px;
-        }
-
-        .privacy-text {
-            font-size: 11px;
-            color: var(--text-muted);
-            text-align: center;
-            margin-top: 15px;
-            display: block;
-        }
-
-        /* ========================
-           ВИДЫ СРО (КАРТОЧКИ)
-           ======================== */
-        .sro-types {
-            background-color: var(--bg-body);
-        }
-
-        .sro-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        .sro-card {
-            background: var(--bg-section);
-            padding: 40px 30px;
-            border-radius: var(--radius-md);
-            text-align: center;
-            transition: var(--transition);
-            border: 1px solid transparent;
-        }
-
-        .sro-card:hover {
-            transform: translateY(-10px);
-            background: var(--bg-body);
-            border-color: var(--border-color);
-            box-shadow: var(--shadow-md);
-        }
-
-        .sro-card img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: var(--radius-md);
-            margin-bottom: 25px;
-            display: inline-block;
-        }
-
-        .sro-card h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-
-        .sro-card p {
-            color: var(--text-muted);
-            font-size: 15px;
-        }
-
-        /* ========================
-           ПРЕИМУЩЕСТВА
-           ======================== */
-        .benefits {
-            background-color: var(--bg-section);
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-        }
-
-        .benefit-item {
-            text-align: center;
-        }
-
-        .icon-wrapper {
-            width: 80px;
-            height: 80px;
-            background-color: var(--bg-body);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-        }
-
-        .benefit-item:hover .icon-wrapper {
-            background-color: var(--primary-color);
-        }
-
-        .benefit-item:hover .icon-wrapper i {
-            color: var(--bg-body);
-        }
-
-        .icon-wrapper i {
-            font-size: 32px;
-            color: var(--accent-color);
-            transition: var(--transition);
-        }
-
-        .benefit-item h4 {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-
-        .benefit-item p {
-            font-size: 14px;
-            color: var(--text-muted);
-        }
-
-        /* ========================
-           КАК МЫ РАБОТАЕМ (ШАГИ)
-           ======================== */
-        .steps {
-            background-color: var(--bg-body);
-        }
-
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 30px;
-            position: relative;
-        }
-
-        .step-item {
-            position: relative;
-            padding: 30px;
-            background: var(--bg-section);
-            border-radius: var(--radius-md);
-            text-align: left;
-        }
-
-        .step-number {
-            font-size: 48px;
-            font-weight: 800;
-            color: var(--border-color);
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            line-height: 1;
-            opacity: 0.5;
-        }
-
-        .step-item h4 {
-            font-size: 20px;
-            margin-bottom: 10px;
-            color: var(--primary-color);
-            margin-top: 10px;
-        }
-
-        .step-item p {
-            font-size: 14px;
-            color: var(--text-muted);
-        }
-
-        /* ========================
-           CTA (ПРИЗЫВ К ДЕЙСТВИЮ)
-           ======================== */
-        .cta {
-            background-color: var(--primary-color);
-            color: var(--text-light);
-            text-align: center;
-            padding: 80px 0;
-            background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
-        }
-
-        .cta h2 {
-            color: var(--text-light);
-            margin-bottom: 20px;
-        }
-
-        .cta p {
-            font-size: 20px;
-            margin-bottom: 40px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            opacity: 0.9;
-        }
-
-        .cta .btn {
-            font-size: 18px;
-            padding: 18px 40px;
-        }
-
-        /* ========================
-           ФУТЕР
-           ======================== */
-        .footer {
-            background-color: var(--primary-light);
-            color: var(--text-light);
-            padding: 60px 0 30px;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 40px;
-            margin-bottom: 40px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 40px;
-        }
-
-        .footer-col {
-            flex: 1;
-            min-width: 250px;
-        }
-
-        .footer-logo {
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--text-light);
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .footer-logo span {
-            color: var(--accent-color);
-        }
-
-        .footer-col p {
-            color: rgba(255,255,255,0.7);
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-
-        .footer-col h4 {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-
-        .footer-contacts li {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: rgba(255,255,255,0.8);
-        }
-
-        .footer-contacts i {
-            color: var(--accent-color);
-        }
-
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 13px;
-            color: rgba(255,255,255,0.5);
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .footer-bottom a {
-            color: rgba(255,255,255,0.5);
-            text-decoration: underline;
-        }
-
-        /* ========================
-           АДАПТИВНОСТЬ (MEDIA QUERIES)
-           ======================== */
-        @media (max-width: 992px) {
-            .hero-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .hero-text {
-                max-width: 100%;
-            }
-
-            .hero-features {
-                align-items: center;
-            }
-            
-            .descriptor {
-                display: none; /* Скрываем дескриптор на планшетах для экономии места */
-            }
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding-top: 70px;
-            }
-
-            .header {
-                height: 70px;
-            }
-
-            h2 {
-                font-size: 28px;
-                margin-bottom: 40px;
-            }
-
-            .hero-text h1 {
-                font-size: 32px;
-            }
-
-            .contact-area .btn-outline {
-                display: none; /* Прячем кнопку в шапке на мобилках */
-            }
-            
-            .phone {
-                font-size: 16px;
-            }
-
-            section {
-                padding: 50px 0;
-            }
-
-            .footer-content {
-                flex-direction: column;
-            }
-            
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-text h1 {
-                font-size: 28px;
-            }
-            
-            .hero-form-wrapper {
-                padding: 25px 20px;
-            }
-            
-            .logo-area .logo {
-                font-size: 20px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Подберём СРО, проверим документы и рассчитаем все взносы для строительных, проектных и изыскательских компаний.">
+  <meta name="theme-color" content="#0b1f3a">
+  <title>СРО-Эксперт — вступление в СРО с понятной сметой</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    :root {
+      --ink: #102442;
+      --ink-soft: #40536d;
+      --navy: #0b1f3a;
+      --blue: #1769e0;
+      --blue-dark: #0d55bd;
+      --mint: #dff7ee;
+      --mint-strong: #0c8e66;
+      --orange: #ff9e1b;
+      --paper: #ffffff;
+      --mist: #f4f7fb;
+      --line: #dce4ef;
+      --radius: 18px;
+      --shadow: 0 18px 45px rgba(16, 36, 66, .10);
+      --container: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: Manrope, Arial, sans-serif; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    .container { width: min(var(--container), calc(100% - 40px)); margin: 0 auto; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--blue); font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .eyebrow::before { width: 8px; height: 8px; border-radius: 50%; background: currentColor; content: ''; }
+    .section-heading { max-width: 680px; margin-bottom: 38px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h2 { margin-bottom: 14px; font-size: clamp(29px, 4vw, 42px); line-height: 1.14; letter-spacing: -.045em; }
+    .section-heading > p { max-width: 620px; margin-bottom: 0; color: var(--ink-soft); font-size: 17px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 13px 22px; border: 1px solid transparent; border-radius: 10px; font-weight: 800; transition: transform .2s ease, background .2s ease, box-shadow .2s ease; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { color: #fff; background: var(--orange); box-shadow: 0 10px 20px rgba(255, 158, 27, .26); }
+    .btn-primary:hover { background: #ee8a00; box-shadow: 0 14px 24px rgba(255, 158, 27, .34); }
+    .btn-light { color: var(--navy); background: #fff; }
+    .btn-light:hover { box-shadow: 0 12px 26px rgba(0, 0, 0, .14); }
+    .btn-ghost { color: var(--blue); border-color: #b8d1f7; background: #fff; }
+    .btn-ghost:hover { border-color: var(--blue); background: #f5f9ff; }
+
+    .topline { background: var(--navy); color: rgba(255,255,255,.76); font-size: 13px; }
+    .topline-inner { display: flex; align-items: center; justify-content: space-between; min-height: 38px; gap: 20px; }
+    .topline .availability { display: flex; align-items: center; gap: 8px; }
+    .status-dot { width: 7px; height: 7px; border-radius: 50%; background: #5ce0a5; box-shadow: 0 0 0 4px rgba(92,224,165,.12); }
+    .topline a { color: #fff; font-weight: 700; }
+    .header { position: sticky; top: 0; z-index: 10; border-bottom: 1px solid rgba(220,228,239,.8); background: rgba(255,255,255,.94); backdrop-filter: blur(14px); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; min-height: 70px; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 11px; color: var(--navy); font-size: 20px; font-weight: 800; letter-spacing: -.05em; white-space: nowrap; }
+    .brand-mark { display: grid; place-items: center; width: 35px; height: 35px; color: #fff; background: var(--blue); border-radius: 10px 10px 10px 3px; font-size: 16px; }
+    .nav { display: flex; align-items: center; gap: 23px; color: var(--ink-soft); font-size: 14px; font-weight: 700; }
+    .nav a { transition: color .2s; }
+    .nav a:hover { color: var(--blue); }
+    .header-call { display: flex; align-items: center; gap: 14px; }
+    .phone { color: var(--navy); font-size: 15px; font-weight: 800; white-space: nowrap; }
+    .header .btn { min-height: 42px; padding: 8px 15px; font-size: 14px; }
+
+    .hero { position: relative; overflow: hidden; padding: 72px 0 58px; background: var(--navy); color: #fff; }
+    .hero::before, .hero::after { position: absolute; border-radius: 50%; pointer-events: none; content: ''; }
+    .hero::before { top: -270px; right: -190px; width: 650px; height: 650px; background: radial-gradient(circle, rgba(40,133,255,.44), transparent 66%); }
+    .hero::after { bottom: -330px; left: 16%; width: 560px; height: 560px; border: 1px solid rgba(255,255,255,.10); box-shadow: 0 0 0 68px rgba(255,255,255,.025), 0 0 0 136px rgba(255,255,255,.018); }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(350px, .75fr); align-items: center; gap: 70px; }
+    .hero .eyebrow { color: #79b5ff; }
+    .hero h1 { max-width: 710px; margin: 16px 0 21px; font-size: clamp(37px, 5vw, 58px); line-height: 1.08; letter-spacing: -.055em; }
+    .hero h1 em { color: #ffd08b; font-style: normal; }
+    .hero-lead { max-width: 620px; margin-bottom: 27px; color: rgba(255,255,255,.8); font-size: 18px; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+    .hero-note { color: rgba(255,255,255,.66); font-size: 13px; }
+    .trust-row { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 36px; }
+    .trust-pill { display: inline-flex; align-items: center; gap: 8px; padding: 9px 12px; border: 1px solid rgba(255,255,255,.16); border-radius: 7px; color: rgba(255,255,255,.84); font-size: 13px; font-weight: 600; }
+    .trust-pill i { color: #7fe4bb; }
+
+    .lead-card { position: relative; padding: 29px; border: 1px solid rgba(255,255,255,.34); border-radius: var(--radius); color: var(--ink); background: rgba(255,255,255,.98); box-shadow: 0 24px 55px rgba(0,0,0,.24); }
+    .lead-card::before { position: absolute; top: -1px; left: 29px; right: 29px; height: 3px; border-radius: 0 0 4px 4px; background: var(--orange); content: ''; }
+    .lead-card h2 { margin: 5px 0 7px; font-size: 25px; letter-spacing: -.04em; }
+    .lead-card > p { margin-bottom: 21px; color: var(--ink-soft); font-size: 14px; }
+    .service-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; margin-bottom: 16px; }
+    .service-option input { position: absolute; opacity: 0; pointer-events: none; }
+    .service-option span { display: flex; align-items: center; justify-content: center; min-height: 45px; padding: 5px; border: 1px solid var(--line); border-radius: 8px; color: var(--ink-soft); background: #fff; font-size: 12px; font-weight: 800; text-align: center; transition: .2s; }
+    .service-option input:checked + span { border-color: var(--blue); color: var(--blue); background: #eff6ff; box-shadow: 0 0 0 2px rgba(23,105,224,.09); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .field { width: 100%; min-height: 51px; padding: 12px 13px; border: 1px solid var(--line); border-radius: 8px; outline: none; color: var(--ink); background: #fff; font-size: 14px; transition: border .2s, box-shadow .2s; }
+    .field:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(23,105,224,.11); }
+    .lead-card .btn { width: 100%; margin-top: 10px; }
+    .privacy { display: block; margin-top: 12px; color: #718198; font-size: 11px; line-height: 1.35; text-align: center; }
+    .form-success { display: none; align-items: center; gap: 9px; margin-top: 13px; color: #087957; font-size: 13px; font-weight: 700; }
+    .form-success.show { display: flex; }
+
+    .quick-start { position: relative; z-index: 2; margin-top: -1px; padding: 19px 0; background: #fff; border-bottom: 1px solid var(--line); }
+    .quick-start-inner { display: grid; grid-template-columns: 1.15fr repeat(3, 1fr); align-items: center; gap: 22px; }
+    .quick-start-title { color: var(--ink); font-size: 14px; font-weight: 800; }
+    .quick-start-title span { display: block; margin-top: 2px; color: var(--ink-soft); font-size: 12px; font-weight: 500; }
+    .quick-item { display: flex; align-items: center; gap: 10px; color: var(--ink-soft); font-size: 13px; font-weight: 700; }
+    .quick-item i { display: grid; place-items: center; flex: none; width: 30px; height: 30px; border-radius: 8px; color: var(--blue); background: #eef5ff; }
+
+    section { padding: 92px 0; }
+    .services { background: var(--mist); }
+    .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .service-card { display: flex; flex-direction: column; min-height: 390px; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; box-shadow: 0 2px 0 rgba(16,36,66,.02); transition: transform .25s ease, box-shadow .25s ease; }
+    .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+    .service-image { position: relative; height: 145px; overflow: hidden; background: #d9e5ee; }
+    .service-image::after { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 38%, rgba(11,31,58,.45)); content: ''; }
+    .service-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .service-card:hover img { transform: scale(1.06); }
+    .service-body { display: flex; flex: 1; flex-direction: column; padding: 23px; }
+    .service-icon { display: grid; place-items: center; width: 42px; height: 42px; margin-top: -45px; margin-bottom: 14px; border: 3px solid #fff; border-radius: 11px; position: relative; z-index: 1; color: #fff; background: var(--blue); }
+    .service-card h3 { margin-bottom: 9px; font-size: 21px; letter-spacing: -.035em; }
+    .service-card p { margin-bottom: 17px; color: var(--ink-soft); font-size: 14px; }
+    .service-list { display: grid; gap: 8px; margin: 0 0 20px; padding: 0; list-style: none; color: var(--ink-soft); font-size: 13px; }
+    .service-list li { display: flex; gap: 8px; }
+    .service-list i { margin-top: 4px; color: var(--mint-strong); font-size: 11px; }
+    .service-link { display: inline-flex; align-items: center; gap: 7px; margin-top: auto; color: var(--blue); font-size: 14px; font-weight: 800; }
+    .service-link i { transition: transform .2s; }
+    .service-card:hover .service-link i { transform: translateX(4px); }
+
+    .value { overflow: hidden; background: #fff; }
+    .value-grid { display: grid; grid-template-columns: .9fr 1.1fr; align-items: start; gap: 72px; }
+    .value-statement { position: sticky; top: 105px; }
+    .value-statement h2 { margin-top: 13px; }
+    .value-statement > p { max-width: 440px; color: var(--ink-soft); }
+    .quote-note { display: flex; align-items: flex-start; gap: 11px; margin-top: 28px; padding: 17px; border-radius: 10px; color: #31516f; background: var(--mint); font-size: 14px; font-weight: 700; }
+    .quote-note i { margin-top: 4px; color: var(--mint-strong); }
+    .value-list { display: grid; gap: 13px; }
+    .value-item { display: grid; grid-template-columns: 47px 1fr; gap: 17px; padding: 21px 20px; border: 1px solid var(--line); border-radius: 13px; transition: box-shadow .2s, transform .2s; }
+    .value-item:hover { transform: translateX(5px); box-shadow: 0 9px 25px rgba(16,36,66,.08); }
+    .value-number { display: grid; place-items: center; width: 47px; height: 47px; border-radius: 12px; color: var(--blue); background: #edf5ff; font-size: 15px; font-weight: 800; }
+    .value-item h3 { margin: 1px 0 5px; font-size: 17px; }
+    .value-item p { margin: 0; color: var(--ink-soft); font-size: 14px; }
+
+    .process { background: var(--mist); }
+    .process-top { display: flex; align-items: flex-end; justify-content: space-between; gap: 25px; }
+    .process-top .section-heading { margin-bottom: 36px; }
+    .process-assurance { margin-bottom: 43px; color: var(--ink-soft); font-size: 13px; text-align: right; }
+    .process-assurance i { margin-right: 6px; color: var(--mint-strong); }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; counter-reset: steps; }
+    .step { position: relative; padding: 27px 20px 21px; border: 1px solid var(--line); border-radius: 13px; background: #fff; counter-increment: steps; }
+    .step::before { display: grid; place-items: center; width: 37px; height: 37px; margin-bottom: 36px; border-radius: 50%; color: #fff; background: var(--blue); box-shadow: 0 0 0 6px #edf5ff; content: '0' counter(steps); font-size: 12px; font-weight: 800; }
+    .step:not(:last-child)::after { position: absolute; top: 45px; left: calc(100% - 1px); z-index: 1; width: 17px; border-top: 1px dashed #aebfd5; content: ''; }
+    .step h3 { margin-bottom: 7px; font-size: 17px; }
+    .step p { margin: 0; color: var(--ink-soft); font-size: 13px; }
+
+    .faq { background: #fff; }
+    .faq-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; align-items: start; }
+    .faq-side { padding: 27px; border-radius: var(--radius); color: #fff; background: var(--navy); }
+    .faq-side h3 { margin: 11px 0; font-size: 25px; line-height: 1.2; letter-spacing: -.04em; }
+    .faq-side p { color: rgba(255,255,255,.72); font-size: 14px; }
+    .faq-side .btn { width: 100%; margin-top: 8px; }
+    details { border-bottom: 1px solid var(--line); }
+    summary { position: relative; padding: 20px 30px 20px 0; color: var(--ink); cursor: pointer; font-size: 16px; font-weight: 800; list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { position: absolute; top: 18px; right: 4px; color: var(--blue); content: '+'; font-size: 23px; font-weight: 500; transition: transform .2s; }
+    details[open] summary::after { transform: rotate(45deg); }
+    .answer { max-width: 650px; padding: 0 0 20px; color: var(--ink-soft); font-size: 14px; }
+    .answer p { margin: 0; }
+
+    .cta { position: relative; overflow: hidden; padding: 69px 0; color: #fff; background: linear-gradient(105deg, #0b1f3a, #113e78); }
+    .cta::after { position: absolute; top: -150px; right: 7%; width: 420px; height: 420px; border: 56px solid rgba(255,255,255,.05); border-radius: 50%; content: ''; }
+    .cta-inner { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 45px; }
+    .cta h2 { max-width: 660px; margin: 13px 0 10px; color: #fff; }
+    .cta p { max-width: 630px; margin: 0; color: rgba(255,255,255,.75); font-size: 16px; }
+    .cta-action { flex: none; min-width: 242px; text-align: center; }
+    .cta-action .btn { width: 100%; }
+    .cta-action small { display: block; margin-top: 10px; color: rgba(255,255,255,.62); font-size: 11px; }
+
+    footer { padding: 44px 0 23px; color: rgba(255,255,255,.72); background: #071629; }
+    .footer-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 45px; padding-bottom: 37px; }
+    footer .brand { color: #fff; margin-bottom: 15px; }
+    footer p { max-width: 365px; margin: 0; font-size: 13px; }
+    .footer-title { margin-bottom: 13px; color: #fff; font-size: 14px; font-weight: 800; }
+    .footer-list { display: grid; gap: 9px; margin: 0; padding: 0; list-style: none; font-size: 13px; }
+    .footer-list a:hover { color: #fff; }
+    .footer-list i { width: 17px; color: #83b8ff; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.12); color: rgba(255,255,255,.44); font-size: 11px; }
+    .footer-bottom a { text-decoration: underline; }
+    .mobile-cta { display: none; }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } .reveal { opacity: 1; transform: none; } }
+    @media (max-width: 1000px) { .nav { display: none; } .hero-grid, .value-grid, .faq-grid { grid-template-columns: 1fr; gap: 38px; } .hero-grid { max-width: 680px; } .lead-card { max-width: 540px; } .value-statement { position: static; } .service-grid, .steps { grid-template-columns: repeat(2, 1fr); } .step:nth-child(2)::after { display: none; } .quick-start-inner { grid-template-columns: 1fr 1fr; } .quick-start-title { grid-column: 1 / -1; } }
+    @media (max-width: 700px) { .container { width: min(100% - 32px, var(--container)); } .topline-inner { min-height: 33px; font-size: 11px; } .topline .availability { display: none; } .topline-inner { justify-content: center; } .header-inner { min-height: 61px; } .header-call .btn { display: none; } .phone { font-size: 13px; } .brand { font-size: 18px; } .brand-mark { width: 31px; height: 31px; } .hero { padding: 53px 0 43px; } .hero h1 { font-size: 36px; } .hero-lead { font-size: 16px; } .hero-actions { align-items: flex-start; flex-direction: column; } .hero-actions .btn { width: 100%; } .trust-row { margin-top: 26px; } .trust-pill { font-size: 11px; } .lead-card { padding: 23px 18px; } .form-row { grid-template-columns: 1fr; gap: 9px; } .quick-start { padding: 16px 0; } .quick-start-inner { gap: 11px; } .quick-item { font-size: 11px; } .quick-item i { width: 26px; height: 26px; } section { padding: 62px 0; } .section-heading { margin-bottom: 27px; } h2 { font-size: 30px; } .section-heading > p { font-size: 15px; } .service-grid, .steps { grid-template-columns: 1fr; } .service-card { min-height: auto; } .service-image { height: 160px; } .value-grid, .faq-grid { gap: 30px; } .process-top, .cta-inner { align-items: flex-start; flex-direction: column; } .process-top .section-heading, .process-assurance { margin-bottom: 25px; } .process-assurance { text-align: left; } .step:not(:last-child)::after { display: none; } .step::before { margin-bottom: 20px; } .cta { padding: 51px 0; } .cta-action { width: 100%; } .footer-grid { grid-template-columns: 1fr; gap: 25px; padding-bottom: 28px; } .footer-bottom { align-items: flex-start; flex-direction: column; } .mobile-cta { position: fixed; right: 12px; bottom: 12px; z-index: 9; display: inline-flex; align-items: center; justify-content: center; width: 54px; height: 54px; border-radius: 50%; color: #fff; background: var(--orange); box-shadow: 0 8px 22px rgba(255,158,27,.42); } }
+  </style>
 </head>
 <body>
+  <div class="topline">
+    <div class="container topline-inner">
+      <span class="availability"><span class="status-dot"></span> Консультант на связи в рабочее время</span>
+      <span>Бесплатный звонок по России: <a href="tel:88001234567">8 (800) 123-45-67</a></span>
+    </div>
+  </div>
+  <header class="header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="СРО-Эксперт, на главную"><span class="brand-mark"><i class="fa-solid fa-shield-halved"></i></span>СРО-Эксперт</a>
+      <nav class="nav" aria-label="Основная навигация">
+        <a href="#services">Направления</a><a href="#process">Как работаем</a><a href="#faq">Вопросы</a>
+      </nav>
+      <div class="header-call"><a class="phone" href="tel:88001234567">8 (800) 123-45-67</a><a class="btn btn-ghost" href="#consultation">Получить расчёт</a></div>
+    </div>
+  </header>
 
-    <!-- Шапка (Sticky Header) -->
-    <header class="header">
-        <div class="container header-content">
-            <div class="logo-area">
-                <a href="#" class="logo">СРО-<span>Эксперт</span></a>
-                <div class="descriptor">Помощь вступления в СРО за 1 день</div>
-            </div>
-            <div class="contact-area">
-                <a href="tel:88001234567" class="phone"><i class="fa-solid fa-phone"></i> 8 (800) 123-45-67</a>
-                <a href="#hero-form" class="btn btn-outline">Заказать звонок</a>
-            </div>
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">Сопровождение вступления в СРО</span>
+          <h1 id="hero-title">СРО без лишних рисков и <em>неясной сметы</em></h1>
+          <p class="hero-lead">Проверим документы, подберём подходящую СРО и заранее рассчитаем обязательные взносы. Вы понимаете каждый следующий шаг до начала работы.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="#consultation">Рассчитать стоимость <i class="fa-solid fa-arrow-right"></i></a><span class="hero-note">Ответим на заявку в рабочее время</span></div>
+          <div class="trust-row" aria-label="Преимущества">
+            <span class="trust-pill"><i class="fa-solid fa-check"></i> Оплата взносов напрямую в СРО</span>
+            <span class="trust-pill"><i class="fa-solid fa-check"></i> Проверка документов до подачи</span>
+            <span class="trust-pill"><i class="fa-solid fa-check"></i> Работа по договору</span>
+          </div>
         </div>
-    </header>
-
-    <!-- Главный экран (Hero Section) -->
-    <main>
-        <section class="hero">
-            <div class="container hero-content">
-                <div class="hero-text">
-                    <h1>Гарантированное вступление в СРО по всей РФ за 24 часа</h1>
-                    <p>Без скрытых платежей и бумажной волокиты. Внесем специалистов в НРС. Подготовим допуск «под ключ» для участия в тендерах.</p>
-                    <ul class="hero-features">
-                        <li><i class="fa-solid fa-check-circle"></i> Работаем строго по закону (ФЗ-315, ГрК РФ)</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Оплата взносов напрямую в СРО без посредников</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Решаем проблему нехватки специалистов</li>
-                    </ul>
-                </div>
-                
-                <!-- Лид-форма (CRO элемент) -->
-                <div class="hero-form-wrapper" id="hero-form">
-                    <h3>Узнать точную стоимость</h3>
-                    <p>Оставьте заявку, и мы бесплатно сделаем расчет всех взносов под ваш вид деятельности</p>
-                    <form class="hero-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Спасибо! Заявка успешно отправлена.');">
-                        <input type="text" name="name" placeholder="Ваше имя" required>
-                        <input type="tel" name="phone" placeholder="Ваш телефон" required>
-                        <button type="submit" class="btn">Получить расчет</button>
-                        <span class="privacy-text">Нажимая на кнопку, вы даете согласие на обработку персональных данных.</span>
-                    </form>
-                </div>
+        <aside class="lead-card reveal" id="consultation" aria-labelledby="form-title">
+          <span class="eyebrow">Бесплатно</span>
+          <h2 id="form-title">Получите расчёт всех взносов</h2>
+          <p>Выберите направление — специалист подготовит предварительную смету под вашу задачу.</p>
+          <form id="lead-form">
+            <div class="service-options" aria-label="Направление СРО">
+              <label class="service-option"><input type="radio" name="service" value="Строительство" checked><span>Строительство</span></label>
+              <label class="service-option"><input type="radio" name="service" value="Проектирование"><span>Проектирование</span></label>
+              <label class="service-option"><input type="radio" name="service" value="Изыскания"><span>Изыскания</span></label>
             </div>
-        </section>
+            <div class="form-row"><input class="field" name="name" type="text" placeholder="Ваше имя" autocomplete="name" required><input class="field" name="phone" type="tel" placeholder="Телефон" autocomplete="tel" inputmode="tel" required></div>
+            <button class="btn btn-primary" type="submit">Получить расчёт <i class="fa-solid fa-arrow-right"></i></button>
+            <span class="privacy">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</span>
+            <span class="form-success" role="status"><i class="fa-solid fa-circle-check"></i> Заявка принята. Мы свяжемся с вами в рабочее время.</span>
+          </form>
+        </aside>
+      </div>
+    </section>
 
-        <!-- С какими СРО работаем -->
-        <section class="sro-types">
-            <div class="container">
-                <h2>С какими СРО мы работаем</h2>
-                <div class="sro-grid">
-                    <!-- Карточка 1 -->
-                    <div class="sro-card">
-                        <img src="1.jpg" alt="СРО Строителей">
-                        <h3>СРО Строителей</h3>
-                        <p>Обязательно для генподрядчиков и строительных компаний, планирующих участвовать в тендерах, заключать контракты от 3 млн рублей или работать на особо опасных объектах.</p>
-                    </div>
-                    <!-- Карточка 2 -->
-                    <div class="sro-card">
-                        <img src="2.jpg" alt="СРО Проектировщиков">
-                        <h3>СРО Проектировщиков</h3>
-                        <p>Для архитектурных бюро и компаний, разрабатывающих проектно-сметную документацию. Необходимо для обеспечения безопасности объектов капитального строительства.</p>
-                    </div>
-                    <!-- Карточка 3 -->
-                    <div class="sro-card">
-                        <img src="3.jpg" alt="СРО Изыскателей">
-                        <h3>СРО Изыскателей</h3>
-                        <p>Для организаций, проводящих инженерные изыскания перед началом строительства. Гарантирует качество исследований почвы, геодезии и геологии на участке.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <div class="quick-start">
+      <div class="container quick-start-inner reveal">
+        <div class="quick-start-title">Что вы получите на первом созвоне<span>Коротко обсудим задачу и необходимые документы</span></div>
+        <div class="quick-item"><i class="fa-solid fa-list-check"></i>Чек-лист документов</div>
+        <div class="quick-item"><i class="fa-solid fa-calculator"></i>Предварительный расчёт</div>
+        <div class="quick-item"><i class="fa-solid fa-route"></i>План оформления</div>
+      </div>
+    </div>
 
-        <!-- Преимущества (Почему мы) -->
-        <section class="benefits">
-            <div class="container">
-                <h2>Почему нам доверяют бизнес?</h2>
-                <div class="benefits-grid">
-                    <div class="benefit-item">
-                        <div class="icon-wrapper">
-                            <i class="fa-solid fa-shield-halved"></i>
-                        </div>
-                        <h4>100% гарантия результата</h4>
-                        <p>Работаем по договору. Мы берем оплату за свои услуги только после успешного прохождения проверки документов.</p>
-                    </div>
-                    
-                    <div class="benefit-item">
-                        <div class="icon-wrapper">
-                            <i class="fa-solid fa-bolt"></i>
-                        </div>
-                        <h4>Выписка в день обращения</h4>
-                        <p>Благодаря налаженным процессам, вы получите выписку из реестра Ростехнадзора и НОСТРОЙ/НОПРИЗ уже через 24 часа.</p>
-                    </div>
-                    
-                    <div class="benefit-item">
-                        <div class="icon-wrapper">
-                            <i class="fa-solid fa-users"></i>
-                        </div>
-                        <h4>Специалисты для НРС</h4>
-                        <p>Не хватает двух инженеров в штате? Мы легально предоставим квалифицированных специалистов для выполнения требований.</p>
-                    </div>
-
-                    <div class="benefit-item">
-                        <div class="icon-wrapper">
-                            <i class="fa-solid fa-file-invoice-dollar"></i>
-                        </div>
-                        <h4>Без скрытых платежей</h4>
-                        <p>Смета фиксируется до подписания договора. Взносы в компфонд регламентированы законом — никаких комиссий с нашей стороны.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Как мы работаем -->
-        <section class="steps">
-            <div class="container">
-                <h2>Как получить допуск за 4 шага</h2>
-                <div class="steps-grid">
-                    <div class="step-item">
-                        <div class="step-number">01</div>
-                        <h4>Оставляете заявку</h4>
-                        <p>Мы связываемся с вами, проводим бесплатный аудит компании и определяем вид СРО, который нужен для ваших задач.</p>
-                    </div>
-                    
-                    <div class="step-item">
-                        <div class="step-number">02</div>
-                        <h4>Готовим документы</h4>
-                        <p>Наши юристы подбирают надежное СРО в вашем регионе и формируют идеальный пакет документов. От вас нужен минимум бумаг.</p>
-                    </div>
-                    
-                    <div class="step-item">
-                        <div class="step-number">03</div>
-                        <h4>Оплата взносов</h4>
-                        <p>Вы оплачиваете взнос в компенсационный фонд и членские взносы напрямую на расчетный счет выбранного СРО.</p>
-                    </div>
-                    
-                    <div class="step-item">
-                        <div class="step-number">04</div>
-                        <h4>Получаете допуск</h4>
-                        <p>Вы получаете оригинал выписки из реестра членов СРО. Теперь вы можете легально брать крупные объекты и выигрывать тендеры.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Нижний CTA-блок -->
-        <section class="cta">
-            <div class="container">
-                <h2>Горят сроки по тендеру?</h2>
-                <p>Оставьте заявку прямо сейчас, и мы запустим процесс оформления документов уже через 15 минут. Не упустите выгодный контракт из-за бюрократии!</p>
-                <a href="#hero-form" class="btn">Получить бесплатную консультацию</a>
-            </div>
-        </section>
-    </main>
-
-    <!-- Подвал (Footer) -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-col">
-                    <a href="#" class="footer-logo">СРО-<span>Эксперт</span></a>
-                    <p>Профессиональное сопровождение строительного бизнеса по всей территории Российской Федерации.</p>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Контакты</h4>
-                    <ul class="footer-contacts">
-                        <li><i class="fa-solid fa-phone"></i> 8 (800) 123-45-67 (Бесплатно по РФ)</li>
-                        <li><i class="fa-solid fa-envelope"></i> info@sro-expert.ru</li>
-                        <li><i class="fa-solid fa-location-dot"></i> г. Москва, Пресненская наб., 12</li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Режим работы</h4>
-                    <ul class="footer-contacts">
-                        <li>Пн-Пт: 09:00 - 19:00</li>
-                        <li>Сб-Вс: Выходной</li>
-                        <li>Прием заявок на сайте: 24/7</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <div class="copyright">
-                    &copy; 2023 СРО-Эксперт. Все права защищены. Информация на сайте не является публичной офертой.
-                </div>
-                <div class="legal-links">
-                    <a href="#">Политика конфиденциальности</a>
-                </div>
-            </div>
+    <section class="services" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-heading reveal"><span class="eyebrow">Направления</span><h2 id="services-title">Подберём решение под ваши работы</h2><p>Не нужно разбираться в нюансах самостоятельно: уточним виды работ, регион и требования к специалистам.</p></div>
+        <div class="service-grid">
+          <article class="service-card reveal"><div class="service-image"><img src="1.jpg" alt="Строительный объект" loading="lazy"></div><div class="service-body"><span class="service-icon"><i class="fa-solid fa-helmet-safety"></i></span><h3>СРО строителей</h3><p>Для подрядчиков, генподрядчиков и компаний, работающих на объектах капитального строительства.</p><ul class="service-list"><li><i class="fa-solid fa-check"></i>Подскажем уровень ответственности</li><li><i class="fa-solid fa-check"></i>Проверим состав специалистов НРС</li></ul><a class="service-link" href="#consultation">Узнать условия <i class="fa-solid fa-arrow-right"></i></a></div></article>
+          <article class="service-card reveal"><div class="service-image"><img src="2.jpg" alt="Проектирование здания" loading="lazy"></div><div class="service-body"><span class="service-icon"><i class="fa-solid fa-compass-drafting"></i></span><h3>СРО проектировщиков</h3><p>Для бюро и компаний, которые разрабатывают проектную и сметную документацию.</p><ul class="service-list"><li><i class="fa-solid fa-check"></i>Оценим требования к договору</li><li><i class="fa-solid fa-check"></i>Поможем собрать пакет документов</li></ul><a class="service-link" href="#consultation">Узнать условия <i class="fa-solid fa-arrow-right"></i></a></div></article>
+          <article class="service-card reveal"><div class="service-image"><img src="3.jpg" alt="Инженерные изыскания на объекте" loading="lazy"></div><div class="service-body"><span class="service-icon"><i class="fa-solid fa-ruler-combined"></i></span><h3>СРО изыскателей</h3><p>Для организаций, выполняющих инженерные изыскания перед началом строительства.</p><ul class="service-list"><li><i class="fa-solid fa-check"></i>Уточним необходимые допуски</li><li><i class="fa-solid fa-check"></i>Сориентируем по взносам</li></ul><a class="service-link" href="#consultation">Узнать условия <i class="fa-solid fa-arrow-right"></i></a></div></article>
         </div>
-    </footer>
+      </div>
+    </section>
 
+    <section class="value" aria-labelledby="value-title">
+      <div class="container value-grid">
+        <div class="value-statement reveal"><span class="eyebrow">Прозрачный процесс</span><h2 id="value-title">Не обещаем «допуск за час» — объясняем, что действительно нужно</h2><p>Вступление в СРО зависит от вида работ, уровня ответственности и комплекта документов. Наша задача — заранее снять неопределённость и провести вас по процессу.</p><div class="quote-note"><i class="fa-solid fa-circle-info"></i><span>Перед подачей вы видите состав обязательных платежей и план действий.</span></div></div>
+        <div class="value-list">
+          <article class="value-item reveal"><span class="value-number">01</span><div><h3>Диагностика вашей ситуации</h3><p>Уточняем виды работ, контрактные планы, регион и текущее состояние документов.</p></div></article>
+          <article class="value-item reveal"><span class="value-number">02</span><div><h3>Понятный расчёт до старта</h3><p>Разделяем обязательные взносы в СРО и услуги сопровождения — без неожиданностей в процессе.</p></div></article>
+          <article class="value-item reveal"><span class="value-number">03</span><div><h3>Проверка пакета документов</h3><p>Находим недостающие сведения до подачи, чтобы снизить риск задержек и повторных запросов.</p></div></article>
+          <article class="value-item reveal"><span class="value-number">04</span><div><h3>Сопровождение до результата</h3><p>Остаёмся на связи и координируем этапы оформления, пока вы занимаетесь своей работой.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="process" id="process" aria-labelledby="process-title">
+      <div class="container">
+        <div class="process-top"><div class="section-heading reveal"><span class="eyebrow">Как работаем</span><h2 id="process-title">Четыре шага до оформления</h2><p>Без сложных личных кабинетов и длинной переписки: специалист держит процесс в одном понятном контуре.</p></div><p class="process-assurance"><i class="fa-solid fa-shield-halved"></i>Платежи в компенсационный фонд — напрямую на счёт СРО</p></div>
+        <div class="steps">
+          <article class="step reveal"><h3>Оставляете заявку</h3><p>Выбираете направление и удобный способ связи.</p></article>
+          <article class="step reveal"><h3>Обсуждаем задачу</h3><p>Проводим первичную оценку документов и требований.</p></article>
+          <article class="step reveal"><h3>Согласовываем смету</h3><p>Фиксируем план, состав платежей и дальнейшие сроки.</p></article>
+          <article class="step reveal"><h3>Сопровождаем подачу</h3><p>Помогаем пройти оформление и получить выписку из реестра.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" id="faq" aria-labelledby="faq-title">
+      <div class="container faq-grid">
+        <aside class="faq-side reveal"><span class="eyebrow">Остались вопросы</span><h3>Разберём вашу ситуацию без сложных терминов</h3><p>Расскажите, какие работы планируете и когда нужен допуск. Подскажем, с чего начать.</p><a class="btn btn-primary" href="#consultation">Задать вопрос <i class="fa-solid fa-arrow-right"></i></a></aside>
+        <div class="faq-list reveal"><div class="section-heading"><span class="eyebrow">FAQ</span><h2 id="faq-title">Частые вопросы</h2></div>
+          <details open><summary>От чего зависит стоимость вступления в СРО?</summary><div class="answer"><p>На неё влияют выбранное направление, уровень ответственности, обязательные взносы и состояние вашего пакета документов. После первичной консультации можно подготовить расчёт именно для вашей ситуации.</p></div></details>
+          <details><summary>Можно ли вступить в СРО, если не хватает специалистов?</summary><div class="answer"><p>Сначала оценим, каких специалистов и сведений не хватает в вашем случае. После этого предложим допустимые варианты действий в рамках требований СРО и законодательства.</p></div></details>
+          <details><summary>Нужно ли приезжать в офис?</summary><div class="answer"><p>Формат работы зависит от конкретной ситуации и требований к документам. На первом созвоне согласуем самый удобный порядок взаимодействия.</p></div></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" aria-labelledby="cta-title"><div class="container cta-inner"><div class="reveal"><span class="eyebrow">Первый шаг</span><h2 id="cta-title">Проверьте, какой вариант СРО подойдёт вашей компании</h2><p>Оставьте контакты — обсудим задачу, оценим документы и подготовим ориентир по обязательным платежам.</p></div><div class="cta-action reveal"><a class="btn btn-primary" href="#consultation">Получить расчёт <i class="fa-solid fa-arrow-right"></i></a><small>Консультация до начала работы — бесплатно</small></div></div></section>
+  </main>
+
+  <footer><div class="container"><div class="footer-grid"><div><a class="brand" href="#top"><span class="brand-mark"><i class="fa-solid fa-shield-halved"></i></span>СРО-Эксперт</a><p>Сопровождение строительных компаний при вступлении в СРО и подготовке документов.</p></div><div><div class="footer-title">Контакты</div><ul class="footer-list"><li><i class="fa-solid fa-phone"></i><a href="tel:88001234567">8 (800) 123-45-67</a></li><li><i class="fa-solid fa-envelope"></i><a href="mailto:info@sro-expert.ru">info@sro-expert.ru</a></li><li><i class="fa-solid fa-location-dot"></i>Москва, работаем по России</li></ul></div><div><div class="footer-title">Режим работы</div><ul class="footer-list"><li>Пн–Пт: 09:00–19:00</li><li>Заявки на сайте: 24/7</li><li><a href="#faq">Ответы на вопросы</a></li></ul></div></div><div class="footer-bottom"><span>© 2026 СРО-Эксперт. Информация на сайте не является публичной офертой.</span><a href="#">Политика конфиденциальности</a></div></div></footer>
+  <a class="mobile-cta" href="#consultation" aria-label="Получить расчёт"><i class="fa-solid fa-calculator"></i></a>
+  <script>
+    const form = document.querySelector('#lead-form');
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const success = form.querySelector('.form-success');
+      success.classList.add('show');
+      form.querySelector('button').textContent = 'Заявка отправлена';
+      form.querySelector('button').disabled = true;
+    });
+    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } }), { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach((item) => observer.observe(item));
+  </script>
 </body>
 </html>
