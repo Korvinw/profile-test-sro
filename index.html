@@ -1,318 +1,568 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html class="scroll-smooth" lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Подберём СРО, проверим документы и рассчитаем все взносы для строительных, проектных и изыскательских компаний.">
-  <meta name="theme-color" content="#0b1f3a">
-  <title>СРО-Эксперт — вступление в СРО с понятной сметой</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <style>
-    :root {
-      --ink: #102442;
-      --ink-soft: #40536d;
-      --navy: #0b1f3a;
-      --blue: #1769e0;
-      --blue-dark: #0d55bd;
-      --mint: #dff7ee;
-      --mint-strong: #0c8e66;
-      --orange: #ff9e1b;
-      --paper: #ffffff;
-      --mist: #f4f7fb;
-      --line: #dce4ef;
-      --radius: 18px;
-      --shadow: 0 18px 45px rgba(16, 36, 66, .10);
-      --container: 1180px;
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="Подберём СРО, проверим документы и рассчитаем все взносы для строительных, проектных и изыскательских компаний." name="description">
+<title>СРО-Эксперт — вступление в СРО с понятной сметой</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#0f172a",
+                    "secondary-container": "#fd761a",
+                    "on-primary": "#ffffff",
+                    "surface": "#f7f9fb",
+                    "surface-container-low": "#f2f4f6",
+                    "surface-container": "#eceef0",
+                    "on-surface": "#191c1e",
+                    "on-surface-variant": "#45464d",
+                    "outline-variant": "#e2e8f0",
+                    "primary-container": "#1e293b",
+                    "on-primary-container": "#94a3b8"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.5rem",
+                    "lg": "0.75rem",
+                    "xl": "1rem",
+                    "2xl": "1.5rem",
+                    "3xl": "2rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "8px",
+                    "gutter": "24px",
+                    "md": "24px",
+                    "container_max": "1200px",
+                    "sm": "12px",
+                    "xs": "4px",
+                    "lg": "48px",
+                    "xl": "80px",
+                    "2xl": "120px"
+            },
+            "fontFamily": {
+                    "display": ["Manrope", "sans-serif"],
+                    "body": ["Inter", "sans-serif"]
+            },
+            "fontSize": {
+                    "display-lg": ["56px", {"lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "800"}],
+                    "headline-md": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "title-lg": ["22px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.7", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .glass-card { background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.12); }
+        .glass-card-light { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.4); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+        .orange-cta { background-color: #fd761a; color: #ffffff; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .orange-cta:hover { background-color: #e66010; transform: translateY(-2px); box-shadow: 0 10px 20px -10px rgba(253, 118, 26, 0.5); }
+        .orange-cta:active { transform: scale(0.98); }
+        .text-gradient { background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .step-line { background: linear-gradient(90deg, #fd761a 0%, transparent 100%); }
+        details summary::-webkit-details-marker { display: none; }
+        @media (max-width: 768px) {
+          .mobile-cta-fab { display: flex !important; }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body overflow-x-hidden antialiased">
+
+<!-- TopAppBar -->
+<header class="bg-surface/80 backdrop-blur-md sticky top-0 z-50 border-b border-outline-variant/50">
+<div class="max-w-[1200px] mx-auto px-gutter w-full h-20 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white">shield</span>
+</div>
+<span class="font-display text-2xl font-extrabold tracking-tight text-primary">СРО-Эксперт</span>
+</div>
+<nav class="hidden lg:flex items-center gap-10">
+<a class="text-primary font-semibold relative after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-secondary-container" href="#services">Направления</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-medium" href="#process">Как работаем</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-medium" href="#faq">Вопросы</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-medium" href="#contacts">Контакты</a>
+</nav>
+<div class="flex items-center gap-6">
+<a class="hidden xl:block font-display font-bold text-primary" href="tel:88001234567">8 (800) 123-45-67</a>
+<button class="orange-cta px-6 py-3 rounded-xl font-label-md">Получить расчёт</button>
+</div>
+</div>
+</header>
+
+<!-- Hero Section -->
+<section class="relative min-h-[90vh] flex items-center bg-primary overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Строительный объект" class="w-full h-full object-cover opacity-40 scale-105" src="1.jpg">
+<div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-[1200px] mx-auto px-gutter w-full grid grid-cols-1 lg:grid-cols-12 gap-xl py-2xl items-center">
+<div class="lg:col-span-7 reveal">
+<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary-container/10 border border-secondary-container/20 text-secondary-container font-label-md mb-8">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary-container opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary-container"></span>
+</span>
+                Сопровождение вступления в СРО
+            </div>
+<h1 class="font-display text-4xl md:text-display-lg text-white mb-8 leading-[1.1]">
+                СРО без лишних рисков и <br><span class="text-secondary-container">неясной сметы</span>
+</h1>
+<p class="text-xl text-on-primary-container mb-12 max-w-xl leading-relaxed">
+                Проверим документы, подберём подходящую СРО и заранее рассчитаем обязательные взносы. Вы понимаете каждый следующий шаг до начала работы.
+            </p>
+<div class="flex flex-wrap gap-6">
+<button class="orange-cta px-10 py-5 rounded-2xl font-title-lg">Рассчитать стоимость</button>
+<button class="bg-white/10 hover:bg-white/20 border border-white/20 px-10 py-5 rounded-2xl font-title-lg text-white transition-all">Задать вопрос</button>
+</div>
+<div class="flex flex-wrap gap-3 mt-10">
+<span class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 border border-white/10 text-white/80 text-sm font-semibold">
+<span class="material-symbols-outlined text-secondary-container text-lg">check</span> Оплата взносов напрямую в СРО
+</span>
+<span class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 border border-white/10 text-white/80 text-sm font-semibold">
+<span class="material-symbols-outlined text-secondary-container text-lg">check</span> Проверка документов до подачи
+</span>
+<span class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 border border-white/10 text-white/80 text-sm font-semibold">
+<span class="material-symbols-outlined text-secondary-container text-lg">check</span> Работа по договору
+</span>
+</div>
+</div>
+<div class="lg:col-span-5 reveal" style="transition-delay: 200ms;">
+<div class="glass-card p-10 rounded-[32px] shadow-2xl relative" id="consultation">
+<div class="absolute -top-6 -right-6 w-24 h-24 bg-secondary-container/20 rounded-full blur-3xl"></div>
+<span class="text-xs font-bold uppercase tracking-widest text-secondary-container">Бесплатно</span>
+<h3 class="font-display text-2xl text-white mt-2 mb-6">Получите расчёт всех взносов</h3>
+<form id="lead-form" class="space-y-6">
+<div class="grid grid-cols-3 gap-2">
+<label class="cursor-pointer">
+<input class="hidden peer" name="service" type="radio" value="Строительство" checked>
+<span class="flex items-center justify-center px-3 py-3 rounded-xl bg-white/10 border border-white/10 text-white/70 text-sm font-bold peer-checked:bg-secondary-container peer-checked:text-white peer-checked:border-secondary-container transition-all">Строительство</span>
+</label>
+<label class="cursor-pointer">
+<input class="hidden peer" name="service" type="radio" value="Проектирование">
+<span class="flex items-center justify-center px-3 py-3 rounded-xl bg-white/10 border border-white/10 text-white/70 text-sm font-bold peer-checked:bg-secondary-container peer-checked:text-white peer-checked:border-secondary-container transition-all">Проектирование</span>
+</label>
+<label class="cursor-pointer">
+<input class="hidden peer" name="service" type="radio" value="Изыскания">
+<span class="flex items-center justify-center px-3 py-3 rounded-xl bg-white/10 border border-white/10 text-white/70 text-sm font-bold peer-checked:bg-secondary-container peer-checked:text-white peer-checked:border-secondary-container transition-all">Изыскания</span>
+</label>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-on-primary-container">Ваше имя</label>
+<input class="w-full h-14 px-5 rounded-xl bg-white/10 border border-white/10 text-white placeholder-white/30 focus:ring-2 focus:ring-secondary-container focus:bg-white/15 outline-none transition-all" name="name" placeholder="Иван Иванов" type="text" required>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-on-primary-container">Телефон</label>
+<input class="w-full h-14 px-5 rounded-xl bg-white/10 border border-white/10 text-white placeholder-white/30 focus:ring-2 focus:ring-secondary-container focus:bg-white/15 outline-none transition-all" name="phone" placeholder="+7 (___) ___-__-__" type="tel" required>
+</div>
+<div class="pt-4">
+<button class="w-full orange-cta py-5 rounded-xl font-title-lg" type="submit">Получить расчёт</button>
+<p class="text-[11px] text-center mt-6 text-on-primary-container/60 uppercase tracking-widest leading-normal">
+                            Нажимая кнопку, вы соглашаетесь на обработку персональных данных.
+                        </p>
+<span class="form-success hidden items-center gap-2 text-base font-bold text-green-400 mt-4 justify-center" role="status">
+<span class="material-symbols-outlined">check_circle</span> Заявка принята. Мы свяжемся с вами в рабочее время.
+</span>
+</div>
+</form>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Trust Signals Bar -->
+<div class="bg-white border-b border-outline-variant reveal">
+<div class="max-w-[1200px] mx-auto px-gutter py-10 grid grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container font-bold">verified</span>
+<span class="text-2xl font-display font-extrabold text-primary">100%</span>
+</div>
+<p class="text-sm text-on-surface-variant font-medium">Легитимность выписок</p>
+</div>
+<div class="flex flex-col gap-1 lg:border-l border-outline-variant lg:pl-8">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container font-bold">timer</span>
+<span class="text-2xl font-display font-extrabold text-primary">24 часа</span>
+</div>
+<p class="text-sm text-on-surface-variant font-medium">Средний срок вступления</p>
+</div>
+<div class="flex flex-col gap-1 lg:border-l border-outline-variant lg:pl-8">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container font-bold">payments</span>
+<span class="text-2xl font-display font-extrabold text-primary">0₽</span>
+</div>
+<p class="text-sm text-on-surface-variant font-medium">Скрытых платежей и комиссий</p>
+</div>
+<div class="flex flex-col gap-1 lg:border-l border-outline-variant lg:pl-8">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container font-bold">groups</span>
+<span class="text-2xl font-display font-extrabold text-primary">5 000+</span>
+</div>
+<p class="text-sm text-on-surface-variant font-medium">Успешных кейсов ежегодно</p>
+</div>
+</div>
+</div>
+
+<!-- Services Section -->
+<section class="py-2xl bg-surface-container-low" id="services">
+<div class="max-w-[1200px] mx-auto px-gutter">
+<div class="mb-16 reveal">
+<span class="text-secondary-container font-label-md uppercase tracking-[0.2em] mb-4 block">Направления</span>
+<h2 class="font-display text-4xl md:text-headline-md text-primary">Подберём решение под ваши работы</h2>
+<p class="text-on-surface-variant mt-4 max-w-xl">Не нужно разбираться в нюансах самостоятельно: уточним виды работ, регион и требования к специалистам.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="group bg-white rounded-[24px] overflow-hidden border border-outline-variant hover:shadow-[0_20px_50px_rgba(15,23,42,0.1)] transition-all duration-500 reveal">
+<div class="relative h-64 overflow-hidden">
+<img alt="Строительство" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="1.jpg">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
+<div class="absolute bottom-6 left-6 flex items-center gap-3">
+<div class="p-2 bg-secondary-container rounded-lg">
+<span class="material-symbols-outlined text-white text-xl">construction</span>
+</div>
+<h3 class="text-white font-display text-xl font-bold">СРО строителей</h3>
+</div>
+</div>
+<div class="p-8">
+<p class="text-on-surface-variant mb-6 leading-relaxed">Для подрядчиков, генподрядчиков и компаний, работающих на объектах капитального строительства.</p>
+<ul class="space-y-3 mb-8 text-sm text-on-surface-variant">
+<li class="flex gap-2"><span class="material-symbols-outlined text-green-600 text-base flex-shrink-0 mt-0.5">check</span>Подскажем уровень ответственности</li>
+<li class="flex gap-2"><span class="material-symbols-outlined text-green-600 text-base flex-shrink-0 mt-0.5">check</span>Проверим состав специалистов НРС</li>
+</ul>
+<a class="inline-flex items-center gap-2 text-primary font-bold hover:text-secondary-container transition-all group/link" href="#consultation">
+                        Узнать условия <span class="material-symbols-outlined group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group bg-white rounded-[24px] overflow-hidden border border-outline-variant hover:shadow-[0_20px_50px_rgba(15,23,42,0.1)] transition-all duration-500 reveal" style="transition-delay: 100ms;">
+<div class="relative h-64 overflow-hidden">
+<img alt="Проектирование" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="2.jpg">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
+<div class="absolute bottom-6 left-6 flex items-center gap-3">
+<div class="p-2 bg-secondary-container rounded-lg">
+<span class="material-symbols-outlined text-white text-xl">draw</span>
+</div>
+<h3 class="text-white font-display text-xl font-bold">СРО проектировщиков</h3>
+</div>
+</div>
+<div class="p-8">
+<p class="text-on-surface-variant mb-6 leading-relaxed">Для бюро и компаний, которые разрабатывают проектную и сметную документацию.</p>
+<ul class="space-y-3 mb-8 text-sm text-on-surface-variant">
+<li class="flex gap-2"><span class="material-symbols-outlined text-green-600 text-base flex-shrink-0 mt-0.5">check</span>Оценим требования к договору</li>
+<li class="flex gap-2"><span class="material-symbols-outlined text-green-600 text-base flex-shrink-0 mt-0.5">check</span>Поможем собрать пакет документов</li>
+</ul>
+<a class="inline-flex items-center gap-2 text-primary font-bold hover:text-secondary-container transition-all group/link" href="#consultation">
+                        Узнать условия <span class="material-symbols-outlined group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group bg-white rounded-[24px] overflow-hidden border border-outline-variant hover:shadow-[0_20px_50px_rgba(15,23,42,0.1)] transition-all duration-500 reveal" style="transition-delay: 200ms;">
+<div class="relative h-64 overflow-hidden">
+<img alt="Изыскания" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="3.jpg">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
+<div class="absolute bottom-6 left-6 flex items-center gap-3">
+<div class="p-2 bg-secondary-container rounded-lg">
+<span class="material-symbols-outlined text-white text-xl">landslide</span>
+</div>
+<h3 class="text-white font-display text-xl font-bold">СРО изыскателей</h3>
+</div>
+</div>
+<div class="p-8">
+<p class="text-on-surface-variant mb-6 leading-relaxed">Для организаций, выполняющих инженерные изыскания перед началом строительства.</p>
+<ul class="space-y-3 mb-8 text-sm text-on-surface-variant">
+<li class="flex gap-2"><span class="material-symbols-outlined text-green-600 text-base flex-shrink-0 mt-0.5">check</span>Уточним необходимые допуски</li>
+<li class="flex gap-2"><span class="material-symbols-outlined text-green-600 text-base flex-shrink-0 mt-0.5">check</span>Сориентируем по взносам</li>
+</ul>
+<a class="inline-flex items-center gap-2 text-primary font-bold hover:text-secondary-container transition-all group/link" href="#consultation">
+                        Узнать условия <span class="material-symbols-outlined group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Value Section (Прозрачный процесс) -->
+<section class="py-2xl bg-white" id="process">
+<div class="max-w-[1200px] mx-auto px-gutter">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<div class="lg:col-span-5 reveal sticky top-[100px]">
+<span class="text-secondary-container font-label-md uppercase tracking-[0.2em] mb-4 block">Прозрачный процесс</span>
+<h2 class="font-display text-4xl md:text-headline-md text-primary mb-6">Не обещаем «допуск за час» — объясняем, что действительно нужно</h2>
+<p class="text-on-surface-variant mb-8 leading-relaxed">Вступление в СРО зависит от вида работ, уровня ответственности и комплекта документов. Наша задача — заранее снять неопределённость и провести вас по процессу.</p>
+<div class="flex items-start gap-3 p-5 rounded-xl bg-green-50 border border-green-100">
+<span class="material-symbols-outlined text-green-600 flex-shrink-0 mt-0.5">info</span>
+<span class="text-sm font-bold text-green-800">Перед подачей вы видите состав обязательных платежей и план действий.</span>
+</div>
+</div>
+<div class="lg:col-span-7 space-y-4 reveal">
+<div class="flex gap-5 p-6 rounded-2xl border border-outline-variant hover:shadow-[0_10px_30px_rgba(15,23,42,0.06)] transition-all hover:translate-x-1">
+<div class="flex items-center justify-center w-12 h-12 rounded-2xl bg-blue-50 text-primary font-display font-extrabold flex-shrink-0">01</div>
+<div>
+<h3 class="font-display text-lg font-bold text-primary mb-2">Диагностика вашей ситуации</h3>
+<p class="text-on-surface-variant text-sm">Уточняем виды работ, контрактные планы, регион и текущее состояние документов.</p>
+</div>
+</div>
+<div class="flex gap-5 p-6 rounded-2xl border border-outline-variant hover:shadow-[0_10px_30px_rgba(15,23,42,0.06)] transition-all hover:translate-x-1">
+<div class="flex items-center justify-center w-12 h-12 rounded-2xl bg-blue-50 text-primary font-display font-extrabold flex-shrink-0">02</div>
+<div>
+<h3 class="font-display text-lg font-bold text-primary mb-2">Понятный расчёт до старта</h3>
+<p class="text-on-surface-variant text-sm">Разделяем обязательные взносы в СРО и услуги сопровождения — без неожиданностей в процессе.</p>
+</div>
+</div>
+<div class="flex gap-5 p-6 rounded-2xl border border-outline-variant hover:shadow-[0_10px_30px_rgba(15,23,42,0.06)] transition-all hover:translate-x-1">
+<div class="flex items-center justify-center w-12 h-12 rounded-2xl bg-blue-50 text-primary font-display font-extrabold flex-shrink-0">03</div>
+<div>
+<h3 class="font-display text-lg font-bold text-primary mb-2">Проверка пакета документов</h3>
+<p class="text-on-surface-variant text-sm">Находим недостающие сведения до подачи, чтобы снизить риск задержек и повторных запросов.</p>
+</div>
+</div>
+<div class="flex gap-5 p-6 rounded-2xl border border-outline-variant hover:shadow-[0_10px_30px_rgba(15,23,42,0.06)] transition-all hover:translate-x-1">
+<div class="flex items-center justify-center w-12 h-12 rounded-2xl bg-blue-50 text-primary font-display font-extrabold flex-shrink-0">04</div>
+<div>
+<h3 class="font-display text-lg font-bold text-primary mb-2">Сопровождение до результата</h3>
+<p class="text-on-surface-variant text-sm">Остаёмся на связи и координируем этапы оформления, пока вы занимаетесь своей работой.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Process Steps Section -->
+<section class="py-2xl bg-surface-container-low overflow-hidden">
+<div class="max-w-[1200px] mx-auto px-gutter">
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16 reveal">
+<div>
+<span class="text-secondary-container font-label-md uppercase tracking-[0.2em] mb-4 block">Как работаем</span>
+<h2 class="font-display text-4xl md:text-headline-md text-primary">Четыре шага до оформления</h2>
+<p class="text-on-surface-variant mt-4 max-w-xl">Без сложных личных кабинетов и длинной переписки: специалист держит процесс в одном понятном контуре.</p>
+</div>
+<div class="flex-shrink-0">
+<span class="inline-flex items-center gap-2 text-sm text-on-surface-variant font-semibold">
+<span class="material-symbols-outlined text-green-600 text-lg">shield</span> Платежи в компенсационный фонд — напрямую на счёт СРО
+</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+<div class="hidden md:block absolute top-[44px] left-[15%] right-[15%] h-[2px] bg-slate-300 z-0">
+<div class="absolute top-0 left-0 h-full w-1/4 step-line"></div>
+</div>
+<div class="relative z-10 text-center reveal">
+<div class="w-20 h-20 rounded-[24px] bg-white border border-outline-variant shadow-sm flex items-center justify-center mx-auto mb-8 transition-transform hover:scale-110 duration-300">
+<span class="text-3xl font-display font-extrabold text-primary">01</span>
+</div>
+<h4 class="font-display text-xl font-bold text-primary mb-3">Заявка</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Выбираете направление и удобный способ связи.</p>
+</div>
+<div class="relative z-10 text-center reveal" style="transition-delay: 150ms;">
+<div class="w-20 h-20 rounded-[24px] bg-white border border-outline-variant shadow-sm flex items-center justify-center mx-auto mb-8 transition-transform hover:scale-110 duration-300">
+<span class="text-3xl font-display font-extrabold text-primary">02</span>
+</div>
+<h4 class="font-display text-xl font-bold text-primary mb-3">Обсуждение</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Проводим первичную оценку документов и требований.</p>
+</div>
+<div class="relative z-10 text-center reveal" style="transition-delay: 300ms;">
+<div class="w-20 h-20 rounded-[24px] bg-white border border-outline-variant shadow-sm flex items-center justify-center mx-auto mb-8 transition-transform hover:scale-110 duration-300">
+<span class="text-3xl font-display font-extrabold text-primary">03</span>
+</div>
+<h4 class="font-display text-xl font-bold text-primary mb-3">Согласование</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Фиксируем план, состав платежей и дальнейшие сроки.</p>
+</div>
+<div class="relative z-10 text-center reveal" style="transition-delay: 450ms;">
+<div class="w-20 h-20 rounded-[24px] bg-secondary-container shadow-lg shadow-secondary-container/20 flex items-center justify-center mx-auto mb-8 transition-transform hover:scale-110 duration-300">
+<span class="text-3xl font-display font-extrabold text-white">04</span>
+</div>
+<h4 class="font-display text-xl font-bold text-primary mb-3">Результат</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Помогаем пройти оформление и получить выписку из реестра.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-2xl bg-white" id="faq">
+<div class="max-w-[1200px] mx-auto px-gutter">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<div class="lg:col-span-5 reveal">
+<div class="bg-primary rounded-[32px] p-10 text-white">
+<span class="text-secondary-container font-label-md uppercase tracking-[0.2em] mb-4 block">Остались вопросы</span>
+<h3 class="font-display text-3xl font-bold mb-4">Разберём вашу ситуацию без сложных терминов</h3>
+<p class="text-on-primary-container mb-8">Расскажите, какие работы планируете и когда нужен допуск. Подскажем, с чего начать.</p>
+<button class="orange-cta w-full py-4 rounded-xl font-title-lg">Задать вопрос</button>
+</div>
+</div>
+<div class="lg:col-span-7 reveal">
+<span class="text-secondary-container font-label-md uppercase tracking-[0.2em] mb-4 block">FAQ</span>
+<h2 class="font-display text-4xl md:text-headline-md text-primary mb-8">Частые вопросы</h2>
+<div class="space-y-3">
+<details class="bg-white border border-outline-variant rounded-2xl overflow-hidden group" open>
+<summary class="flex items-center justify-between p-6 text-left font-display text-lg font-bold text-primary cursor-pointer list-none">
+<span>От чего зависит стоимость вступления в СРО?</span>
+<span class="material-symbols-outlined text-secondary-container group-open:rotate-45 transition-transform duration-300">add</span>
+</summary>
+<div class="px-6 pb-6 pt-0 text-on-surface-variant border-t border-outline-variant leading-relaxed">
+<p>На неё влияют выбранное направление, уровень ответственности, обязательные взносы и состояние вашего пакета документов. После первичной консультации можно подготовить расчёт именно для вашей ситуации.</p>
+</div>
+</details>
+<details class="bg-white border border-outline-variant rounded-2xl overflow-hidden group">
+<summary class="flex items-center justify-between p-6 text-left font-display text-lg font-bold text-primary cursor-pointer list-none">
+<span>Можно ли вступить в СРО, если не хватает специалистов?</span>
+<span class="material-symbols-outlined text-secondary-container group-open:rotate-45 transition-transform duration-300">add</span>
+</summary>
+<div class="px-6 pb-6 pt-0 text-on-surface-variant border-t border-outline-variant leading-relaxed">
+<p>Сначала оценим, каких специалистов и сведений не хватает в вашем случае. После этого предложим допустимые варианты действий в рамках требований СРО и законодательства.</p>
+</div>
+</details>
+<details class="bg-white border border-outline-variant rounded-2xl overflow-hidden group">
+<summary class="flex items-center justify-between p-6 text-left font-display text-lg font-bold text-primary cursor-pointer list-none">
+<span>Нужно ли приезжать в офис?</span>
+<span class="material-symbols-outlined text-secondary-container group-open:rotate-45 transition-transform duration-300">add</span>
+</summary>
+<div class="px-6 pb-6 pt-0 text-on-surface-variant border-t border-outline-variant leading-relaxed">
+<p>Формат работы зависит от конкретной ситуации и требований к документам. На первом созвоне согласуем самый удобный порядок взаимодействия.</p>
+</div>
+</details>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Final CTA Section -->
+<section class="py-2xl" id="contacts">
+<div class="max-w-[1200px] mx-auto px-gutter reveal">
+<div class="bg-primary rounded-[48px] p-12 lg:p-24 relative overflow-hidden flex flex-col lg:flex-row items-center gap-16">
+<div class="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary-container/10 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 border border-white/10 rounded-full -translate-x-1/2 translate-y-1/2"></div>
+<div class="lg:flex-1 relative z-10 text-center lg:text-left">
+<span class="text-secondary-container font-label-md uppercase tracking-[0.2em] mb-4 block">Первый шаг</span>
+<h2 class="font-display text-4xl lg:text-5xl text-white font-extrabold mb-8 leading-tight">Проверьте, какой вариант СРО подойдёт вашей компании</h2>
+<p class="text-on-primary-container text-lg mb-12 max-w-xl">Оставьте контакты — обсудим задачу, оценим документы и подготовим ориентир по обязательным платежам.</p>
+<div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-8">
+<div class="flex flex-col items-center lg:items-start">
+<span class="text-white/40 text-xs uppercase tracking-widest font-bold mb-1">Горячая линия</span>
+<a class="text-white font-display text-2xl font-bold" href="tel:88001234567">8 (800) 123-45-67</a>
+</div>
+</div>
+</div>
+<div class="w-full lg:w-[440px] relative z-10">
+<div class="bg-white rounded-[32px] p-10 shadow-2xl">
+<div class="space-y-6">
+<input class="w-full h-14 px-5 rounded-xl border border-outline-variant focus:ring-2 focus:ring-primary outline-none transition-all" placeholder="Ваше имя" type="text">
+<input class="w-full h-14 px-5 rounded-xl border border-outline-variant focus:ring-2 focus:ring-primary outline-none transition-all" placeholder="+7 (___) ___-__-__" type="tel">
+<button class="orange-cta w-full py-5 rounded-xl font-title-lg shadow-lg">Получить расчёт</button>
+<div class="flex items-center justify-center gap-2 text-[11px] text-on-surface-variant font-medium">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+                            Данные защищены по 152-ФЗ
+                        </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-white border-t border-outline-variant py-20">
+<div class="max-w-[1200px] mx-auto px-gutter">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-gutter">
+<div class="md:col-span-5">
+<div class="flex items-center gap-2 mb-6">
+<div class="w-8 h-8 bg-primary rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-sm">shield</span>
+</div>
+<span class="font-display text-xl font-extrabold tracking-tight text-primary">СРО-Эксперт</span>
+</div>
+<p class="text-on-surface-variant max-w-sm leading-relaxed mb-8">Сопровождение строительных компаний при вступлении в СРО и подготовке документов.</p>
+<p class="text-sm text-on-surface-variant/60">© 2026 СРО-Эксперт. Все права защищены.</p>
+</div>
+<div class="md:col-span-3">
+<h5 class="font-display font-bold text-primary mb-6">Контакты</h5>
+<ul class="space-y-4 text-on-surface-variant font-medium">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary-container text-lg">call</span><a class="hover:text-primary transition-colors" href="tel:88001234567">8 (800) 123-45-67</a></li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary-container text-lg">mail</span><a class="hover:text-primary transition-colors" href="mailto:info@sro-expert.ru">info@sro-expert.ru</a></li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary-container text-lg">location_on</span><span>Москва, работаем по России</span></li>
+</ul>
+</div>
+<div class="md:col-span-4">
+<h5 class="font-display font-bold text-primary mb-6">Режим работы</h5>
+<ul class="space-y-4 text-on-surface-variant font-medium">
+<li>Пн–Пт: 09:00–19:00</li>
+<li>Заявки на сайте: 24/7</li>
+<li><a class="hover:text-primary transition-colors" href="#faq">Ответы на вопросы</a></li>
+</ul>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-outline-variant flex flex-col md:flex-row justify-between gap-4 text-sm text-on-surface-variant/60">
+<span>Информация на сайте не является публичной офертой.</span>
+<a class="hover:text-primary transition-colors underline" href="#">Политика конфиденциальности</a>
+</div>
+</div>
+</footer>
+
+<!-- Mobile FAB -->
+<a class="fixed right-4 bottom-4 z-50 hidden mobile-cta-fab items-center justify-center w-14 h-14 rounded-full bg-secondary-container text-white shadow-lg" href="#consultation" aria-label="Получить расчёт">
+<span class="material-symbols-outlined">calculate</span>
+</a>
+
+<script>
+    // Form submission
+    const form = document.querySelector('#lead-form');
+    if (form) {
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const success = form.querySelector('.form-success');
+        const btn = form.querySelector('button[type="submit"]');
+        if (success) success.classList.remove('hidden');
+        if (btn) { btn.textContent = 'Заявка отправлена'; btn.disabled = true; }
+      });
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
-    body { margin: 0; color: var(--ink); background: var(--paper); font-family: Manrope, Arial, sans-serif; line-height: 1.55; -webkit-font-smoothing: antialiased; }
-    a { color: inherit; text-decoration: none; }
-    button, input { font: inherit; }
-    button { cursor: pointer; }
-    .container { width: min(var(--container), calc(100% - 40px)); margin: 0 auto; }
-    .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--blue); font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
-    .eyebrow::before { width: 8px; height: 8px; border-radius: 50%; background: currentColor; content: ''; }
-    .section-heading { max-width: 680px; margin-bottom: 38px; }
-    h1, h2, h3, p { margin-top: 0; }
-    h2 { margin-bottom: 14px; font-size: clamp(29px, 4vw, 42px); line-height: 1.14; letter-spacing: -.045em; }
-    .section-heading > p { max-width: 620px; margin-bottom: 0; color: var(--ink-soft); font-size: 17px; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 13px 22px; border: 1px solid transparent; border-radius: 10px; font-weight: 800; transition: transform .2s ease, background .2s ease, box-shadow .2s ease; }
-    .btn:hover { transform: translateY(-2px); }
-    .btn-primary { color: #fff; background: var(--orange); box-shadow: 0 10px 20px rgba(255, 158, 27, .26); }
-    .btn-primary:hover { background: #ee8a00; box-shadow: 0 14px 24px rgba(255, 158, 27, .34); }
-    .btn-light { color: var(--navy); background: #fff; }
-    .btn-light:hover { box-shadow: 0 12px 26px rgba(0, 0, 0, .14); }
-    .btn-ghost { color: var(--blue); border-color: #b8d1f7; background: #fff; }
-    .btn-ghost:hover { border-color: var(--blue); background: #f5f9ff; }
+    // Reveal animation on scroll
+    function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+        for (var i = 0; i < reveals.length; i++) {
+            var windowHeight = window.innerHeight;
+            var elementTop = reveals[i].getBoundingClientRect().top;
+            var elementVisible = 100;
+            if (elementTop < windowHeight - elementVisible) {
+                reveals[i].classList.add("active");
+            }
+        }
+    }
+    window.addEventListener("scroll", reveal);
+    reveal();
 
-    .topline { background: var(--navy); color: rgba(255,255,255,.76); font-size: 13px; }
-    .topline-inner { display: flex; align-items: center; justify-content: space-between; min-height: 38px; gap: 20px; }
-    .topline .availability { display: flex; align-items: center; gap: 8px; }
-    .status-dot { width: 7px; height: 7px; border-radius: 50%; background: #5ce0a5; box-shadow: 0 0 0 4px rgba(92,224,165,.12); }
-    .topline a { color: #fff; font-weight: 700; }
-    .header { position: sticky; top: 0; z-index: 10; border-bottom: 1px solid rgba(220,228,239,.8); background: rgba(255,255,255,.94); backdrop-filter: blur(14px); }
-    .header-inner { display: flex; align-items: center; justify-content: space-between; min-height: 70px; gap: 24px; }
-    .brand { display: flex; align-items: center; gap: 11px; color: var(--navy); font-size: 20px; font-weight: 800; letter-spacing: -.05em; white-space: nowrap; }
-    .brand-mark { display: grid; place-items: center; width: 35px; height: 35px; color: #fff; background: var(--blue); border-radius: 10px 10px 10px 3px; font-size: 16px; }
-    .nav { display: flex; align-items: center; gap: 23px; color: var(--ink-soft); font-size: 14px; font-weight: 700; }
-    .nav a { transition: color .2s; }
-    .nav a:hover { color: var(--blue); }
-    .header-call { display: flex; align-items: center; gap: 14px; }
-    .phone { color: var(--navy); font-size: 15px; font-weight: 800; white-space: nowrap; }
-    .header .btn { min-height: 42px; padding: 8px 15px; font-size: 14px; }
-
-    .hero { position: relative; overflow: hidden; padding: 72px 0 58px; background: var(--navy); color: #fff; }
-    .hero::before, .hero::after { position: absolute; border-radius: 50%; pointer-events: none; content: ''; }
-    .hero::before { top: -270px; right: -190px; width: 650px; height: 650px; background: radial-gradient(circle, rgba(40,133,255,.44), transparent 66%); }
-    .hero::after { bottom: -330px; left: 16%; width: 560px; height: 560px; border: 1px solid rgba(255,255,255,.10); box-shadow: 0 0 0 68px rgba(255,255,255,.025), 0 0 0 136px rgba(255,255,255,.018); }
-    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(350px, .75fr); align-items: center; gap: 70px; }
-    .hero .eyebrow { color: #79b5ff; }
-    .hero h1 { max-width: 710px; margin: 16px 0 21px; font-size: clamp(37px, 5vw, 58px); line-height: 1.08; letter-spacing: -.055em; }
-    .hero h1 em { color: #ffd08b; font-style: normal; }
-    .hero-lead { max-width: 620px; margin-bottom: 27px; color: rgba(255,255,255,.8); font-size: 18px; }
-    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
-    .hero-note { color: rgba(255,255,255,.66); font-size: 13px; }
-    .trust-row { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 36px; }
-    .trust-pill { display: inline-flex; align-items: center; gap: 8px; padding: 9px 12px; border: 1px solid rgba(255,255,255,.16); border-radius: 7px; color: rgba(255,255,255,.84); font-size: 13px; font-weight: 600; }
-    .trust-pill i { color: #7fe4bb; }
-
-    .lead-card { position: relative; padding: 29px; border: 1px solid rgba(255,255,255,.34); border-radius: var(--radius); color: var(--ink); background: rgba(255,255,255,.98); box-shadow: 0 24px 55px rgba(0,0,0,.24); }
-    .lead-card::before { position: absolute; top: -1px; left: 29px; right: 29px; height: 3px; border-radius: 0 0 4px 4px; background: var(--orange); content: ''; }
-    .lead-card h2 { margin: 5px 0 7px; font-size: 25px; letter-spacing: -.04em; }
-    .lead-card > p { margin-bottom: 21px; color: var(--ink-soft); font-size: 14px; }
-    .service-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; margin-bottom: 16px; }
-    .service-option input { position: absolute; opacity: 0; pointer-events: none; }
-    .service-option span { display: flex; align-items: center; justify-content: center; min-height: 45px; padding: 5px; border: 1px solid var(--line); border-radius: 8px; color: var(--ink-soft); background: #fff; font-size: 12px; font-weight: 800; text-align: center; transition: .2s; }
-    .service-option input:checked + span { border-color: var(--blue); color: var(--blue); background: #eff6ff; box-shadow: 0 0 0 2px rgba(23,105,224,.09); }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .field { width: 100%; min-height: 51px; padding: 12px 13px; border: 1px solid var(--line); border-radius: 8px; outline: none; color: var(--ink); background: #fff; font-size: 14px; transition: border .2s, box-shadow .2s; }
-    .field:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(23,105,224,.11); }
-    .lead-card .btn { width: 100%; margin-top: 10px; }
-    .privacy { display: block; margin-top: 12px; color: #718198; font-size: 11px; line-height: 1.35; text-align: center; }
-    .form-success { display: none; align-items: center; gap: 9px; margin-top: 13px; color: #087957; font-size: 13px; font-weight: 700; }
-    .form-success.show { display: flex; }
-
-    .quick-start { position: relative; z-index: 2; margin-top: -1px; padding: 19px 0; background: #fff; border-bottom: 1px solid var(--line); }
-    .quick-start-inner { display: grid; grid-template-columns: 1.15fr repeat(3, 1fr); align-items: center; gap: 22px; }
-    .quick-start-title { color: var(--ink); font-size: 14px; font-weight: 800; }
-    .quick-start-title span { display: block; margin-top: 2px; color: var(--ink-soft); font-size: 12px; font-weight: 500; }
-    .quick-item { display: flex; align-items: center; gap: 10px; color: var(--ink-soft); font-size: 13px; font-weight: 700; }
-    .quick-item i { display: grid; place-items: center; flex: none; width: 30px; height: 30px; border-radius: 8px; color: var(--blue); background: #eef5ff; }
-
-    section { padding: 92px 0; }
-    .services { background: var(--mist); }
-    .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .service-card { display: flex; flex-direction: column; min-height: 390px; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; box-shadow: 0 2px 0 rgba(16,36,66,.02); transition: transform .25s ease, box-shadow .25s ease; }
-    .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
-    .service-image { position: relative; height: 145px; overflow: hidden; background: #d9e5ee; }
-    .service-image::after { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 38%, rgba(11,31,58,.45)); content: ''; }
-    .service-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
-    .service-card:hover img { transform: scale(1.06); }
-    .service-body { display: flex; flex: 1; flex-direction: column; padding: 23px; }
-    .service-icon { display: grid; place-items: center; width: 42px; height: 42px; margin-top: -45px; margin-bottom: 14px; border: 3px solid #fff; border-radius: 11px; position: relative; z-index: 1; color: #fff; background: var(--blue); }
-    .service-card h3 { margin-bottom: 9px; font-size: 21px; letter-spacing: -.035em; }
-    .service-card p { margin-bottom: 17px; color: var(--ink-soft); font-size: 14px; }
-    .service-list { display: grid; gap: 8px; margin: 0 0 20px; padding: 0; list-style: none; color: var(--ink-soft); font-size: 13px; }
-    .service-list li { display: flex; gap: 8px; }
-    .service-list i { margin-top: 4px; color: var(--mint-strong); font-size: 11px; }
-    .service-link { display: inline-flex; align-items: center; gap: 7px; margin-top: auto; color: var(--blue); font-size: 14px; font-weight: 800; }
-    .service-link i { transition: transform .2s; }
-    .service-card:hover .service-link i { transform: translateX(4px); }
-
-    .value { overflow: hidden; background: #fff; }
-    .value-grid { display: grid; grid-template-columns: .9fr 1.1fr; align-items: start; gap: 72px; }
-    .value-statement { position: sticky; top: 105px; }
-    .value-statement h2 { margin-top: 13px; }
-    .value-statement > p { max-width: 440px; color: var(--ink-soft); }
-    .quote-note { display: flex; align-items: flex-start; gap: 11px; margin-top: 28px; padding: 17px; border-radius: 10px; color: #31516f; background: var(--mint); font-size: 14px; font-weight: 700; }
-    .quote-note i { margin-top: 4px; color: var(--mint-strong); }
-    .value-list { display: grid; gap: 13px; }
-    .value-item { display: grid; grid-template-columns: 47px 1fr; gap: 17px; padding: 21px 20px; border: 1px solid var(--line); border-radius: 13px; transition: box-shadow .2s, transform .2s; }
-    .value-item:hover { transform: translateX(5px); box-shadow: 0 9px 25px rgba(16,36,66,.08); }
-    .value-number { display: grid; place-items: center; width: 47px; height: 47px; border-radius: 12px; color: var(--blue); background: #edf5ff; font-size: 15px; font-weight: 800; }
-    .value-item h3 { margin: 1px 0 5px; font-size: 17px; }
-    .value-item p { margin: 0; color: var(--ink-soft); font-size: 14px; }
-
-    .process { background: var(--mist); }
-    .process-top { display: flex; align-items: flex-end; justify-content: space-between; gap: 25px; }
-    .process-top .section-heading { margin-bottom: 36px; }
-    .process-assurance { margin-bottom: 43px; color: var(--ink-soft); font-size: 13px; text-align: right; }
-    .process-assurance i { margin-right: 6px; color: var(--mint-strong); }
-    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; counter-reset: steps; }
-    .step { position: relative; padding: 27px 20px 21px; border: 1px solid var(--line); border-radius: 13px; background: #fff; counter-increment: steps; }
-    .step::before { display: grid; place-items: center; width: 37px; height: 37px; margin-bottom: 36px; border-radius: 50%; color: #fff; background: var(--blue); box-shadow: 0 0 0 6px #edf5ff; content: '0' counter(steps); font-size: 12px; font-weight: 800; }
-    .step:not(:last-child)::after { position: absolute; top: 45px; left: calc(100% - 1px); z-index: 1; width: 17px; border-top: 1px dashed #aebfd5; content: ''; }
-    .step h3 { margin-bottom: 7px; font-size: 17px; }
-    .step p { margin: 0; color: var(--ink-soft); font-size: 13px; }
-
-    .faq { background: #fff; }
-    .faq-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; align-items: start; }
-    .faq-side { padding: 27px; border-radius: var(--radius); color: #fff; background: var(--navy); }
-    .faq-side h3 { margin: 11px 0; font-size: 25px; line-height: 1.2; letter-spacing: -.04em; }
-    .faq-side p { color: rgba(255,255,255,.72); font-size: 14px; }
-    .faq-side .btn { width: 100%; margin-top: 8px; }
-    details { border-bottom: 1px solid var(--line); }
-    summary { position: relative; padding: 20px 30px 20px 0; color: var(--ink); cursor: pointer; font-size: 16px; font-weight: 800; list-style: none; }
-    summary::-webkit-details-marker { display: none; }
-    summary::after { position: absolute; top: 18px; right: 4px; color: var(--blue); content: '+'; font-size: 23px; font-weight: 500; transition: transform .2s; }
-    details[open] summary::after { transform: rotate(45deg); }
-    .answer { max-width: 650px; padding: 0 0 20px; color: var(--ink-soft); font-size: 14px; }
-    .answer p { margin: 0; }
-
-    .cta { position: relative; overflow: hidden; padding: 69px 0; color: #fff; background: linear-gradient(105deg, #0b1f3a, #113e78); }
-    .cta::after { position: absolute; top: -150px; right: 7%; width: 420px; height: 420px; border: 56px solid rgba(255,255,255,.05); border-radius: 50%; content: ''; }
-    .cta-inner { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 45px; }
-    .cta h2 { max-width: 660px; margin: 13px 0 10px; color: #fff; }
-    .cta p { max-width: 630px; margin: 0; color: rgba(255,255,255,.75); font-size: 16px; }
-    .cta-action { flex: none; min-width: 242px; text-align: center; }
-    .cta-action .btn { width: 100%; }
-    .cta-action small { display: block; margin-top: 10px; color: rgba(255,255,255,.62); font-size: 11px; }
-
-    footer { padding: 44px 0 23px; color: rgba(255,255,255,.72); background: #071629; }
-    .footer-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 45px; padding-bottom: 37px; }
-    footer .brand { color: #fff; margin-bottom: 15px; }
-    footer p { max-width: 365px; margin: 0; font-size: 13px; }
-    .footer-title { margin-bottom: 13px; color: #fff; font-size: 14px; font-weight: 800; }
-    .footer-list { display: grid; gap: 9px; margin: 0; padding: 0; list-style: none; font-size: 13px; }
-    .footer-list a:hover { color: #fff; }
-    .footer-list i { width: 17px; color: #83b8ff; }
-    .footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.12); color: rgba(255,255,255,.44); font-size: 11px; }
-    .footer-bottom a { text-decoration: underline; }
-    .mobile-cta { display: none; }
-
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
-    .reveal.is-visible { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } .reveal { opacity: 1; transform: none; } }
-    @media (max-width: 1000px) { .nav { display: none; } .hero-grid, .value-grid, .faq-grid { grid-template-columns: 1fr; gap: 38px; } .hero-grid { max-width: 680px; } .lead-card { max-width: 540px; } .value-statement { position: static; } .service-grid, .steps { grid-template-columns: repeat(2, 1fr); } .step:nth-child(2)::after { display: none; } .quick-start-inner { grid-template-columns: 1fr 1fr; } .quick-start-title { grid-column: 1 / -1; } }
-    @media (max-width: 700px) { .container { width: min(100% - 32px, var(--container)); } .topline-inner { min-height: 33px; font-size: 11px; } .topline .availability { display: none; } .topline-inner { justify-content: center; } .header-inner { min-height: 61px; } .header-call .btn { display: none; } .phone { font-size: 13px; } .brand { font-size: 18px; } .brand-mark { width: 31px; height: 31px; } .hero { padding: 53px 0 43px; } .hero h1 { font-size: 36px; } .hero-lead { font-size: 16px; } .hero-actions { align-items: flex-start; flex-direction: column; } .hero-actions .btn { width: 100%; } .trust-row { margin-top: 26px; } .trust-pill { font-size: 11px; } .lead-card { padding: 23px 18px; } .form-row { grid-template-columns: 1fr; gap: 9px; } .quick-start { padding: 16px 0; } .quick-start-inner { gap: 11px; } .quick-item { font-size: 11px; } .quick-item i { width: 26px; height: 26px; } section { padding: 62px 0; } .section-heading { margin-bottom: 27px; } h2 { font-size: 30px; } .section-heading > p { font-size: 15px; } .service-grid, .steps { grid-template-columns: 1fr; } .service-card { min-height: auto; } .service-image { height: 160px; } .value-grid, .faq-grid { gap: 30px; } .process-top, .cta-inner { align-items: flex-start; flex-direction: column; } .process-top .section-heading, .process-assurance { margin-bottom: 25px; } .process-assurance { text-align: left; } .step:not(:last-child)::after { display: none; } .step::before { margin-bottom: 20px; } .cta { padding: 51px 0; } .cta-action { width: 100%; } .footer-grid { grid-template-columns: 1fr; gap: 25px; padding-bottom: 28px; } .footer-bottom { align-items: flex-start; flex-direction: column; } .mobile-cta { position: fixed; right: 12px; bottom: 12px; z-index: 9; display: inline-flex; align-items: center; justify-content: center; width: 54px; height: 54px; border-radius: 50%; color: #fff; background: var(--orange); box-shadow: 0 8px 22px rgba(255,158,27,.42); } }
-  </style>
-</head>
-<body>
-  <div class="topline">
-    <div class="container topline-inner">
-      <span class="availability"><span class="status-dot"></span> Консультант на связи в рабочее время</span>
-      <span>Бесплатный звонок по России: <a href="tel:88001234567">8 (800) 123-45-67</a></span>
-    </div>
-  </div>
-  <header class="header">
-    <div class="container header-inner">
-      <a class="brand" href="#top" aria-label="СРО-Эксперт, на главную"><span class="brand-mark"><i class="fa-solid fa-shield-halved"></i></span>СРО-Эксперт</a>
-      <nav class="nav" aria-label="Основная навигация">
-        <a href="#services">Направления</a><a href="#process">Как работаем</a><a href="#faq">Вопросы</a>
-      </nav>
-      <div class="header-call"><a class="phone" href="tel:88001234567">8 (800) 123-45-67</a><a class="btn btn-ghost" href="#consultation">Получить расчёт</a></div>
-    </div>
-  </header>
-
-  <main id="top">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="container hero-grid">
-        <div class="hero-copy reveal">
-          <span class="eyebrow">Сопровождение вступления в СРО</span>
-          <h1 id="hero-title">СРО без лишних рисков и <em>неясной сметы</em></h1>
-          <p class="hero-lead">Проверим документы, подберём подходящую СРО и заранее рассчитаем обязательные взносы. Вы понимаете каждый следующий шаг до начала работы.</p>
-          <div class="hero-actions"><a class="btn btn-primary" href="#consultation">Рассчитать стоимость <i class="fa-solid fa-arrow-right"></i></a><span class="hero-note">Ответим на заявку в рабочее время</span></div>
-          <div class="trust-row" aria-label="Преимущества">
-            <span class="trust-pill"><i class="fa-solid fa-check"></i> Оплата взносов напрямую в СРО</span>
-            <span class="trust-pill"><i class="fa-solid fa-check"></i> Проверка документов до подачи</span>
-            <span class="trust-pill"><i class="fa-solid fa-check"></i> Работа по договору</span>
-          </div>
-        </div>
-        <aside class="lead-card reveal" id="consultation" aria-labelledby="form-title">
-          <span class="eyebrow">Бесплатно</span>
-          <h2 id="form-title">Получите расчёт всех взносов</h2>
-          <p>Выберите направление — специалист подготовит предварительную смету под вашу задачу.</p>
-          <form id="lead-form">
-            <div class="service-options" aria-label="Направление СРО">
-              <label class="service-option"><input type="radio" name="service" value="Строительство" checked><span>Строительство</span></label>
-              <label class="service-option"><input type="radio" name="service" value="Проектирование"><span>Проектирование</span></label>
-              <label class="service-option"><input type="radio" name="service" value="Изыскания"><span>Изыскания</span></label>
-            </div>
-            <div class="form-row"><input class="field" name="name" type="text" placeholder="Ваше имя" autocomplete="name" required><input class="field" name="phone" type="tel" placeholder="Телефон" autocomplete="tel" inputmode="tel" required></div>
-            <button class="btn btn-primary" type="submit">Получить расчёт <i class="fa-solid fa-arrow-right"></i></button>
-            <span class="privacy">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</span>
-            <span class="form-success" role="status"><i class="fa-solid fa-circle-check"></i> Заявка принята. Мы свяжемся с вами в рабочее время.</span>
-          </form>
-        </aside>
-      </div>
-    </section>
-
-    <div class="quick-start">
-      <div class="container quick-start-inner reveal">
-        <div class="quick-start-title">Что вы получите на первом созвоне<span>Коротко обсудим задачу и необходимые документы</span></div>
-        <div class="quick-item"><i class="fa-solid fa-list-check"></i>Чек-лист документов</div>
-        <div class="quick-item"><i class="fa-solid fa-calculator"></i>Предварительный расчёт</div>
-        <div class="quick-item"><i class="fa-solid fa-route"></i>План оформления</div>
-      </div>
-    </div>
-
-    <section class="services" id="services" aria-labelledby="services-title">
-      <div class="container">
-        <div class="section-heading reveal"><span class="eyebrow">Направления</span><h2 id="services-title">Подберём решение под ваши работы</h2><p>Не нужно разбираться в нюансах самостоятельно: уточним виды работ, регион и требования к специалистам.</p></div>
-        <div class="service-grid">
-          <article class="service-card reveal"><div class="service-image"><img src="1.jpg" alt="Строительный объект" loading="lazy"></div><div class="service-body"><span class="service-icon"><i class="fa-solid fa-helmet-safety"></i></span><h3>СРО строителей</h3><p>Для подрядчиков, генподрядчиков и компаний, работающих на объектах капитального строительства.</p><ul class="service-list"><li><i class="fa-solid fa-check"></i>Подскажем уровень ответственности</li><li><i class="fa-solid fa-check"></i>Проверим состав специалистов НРС</li></ul><a class="service-link" href="#consultation">Узнать условия <i class="fa-solid fa-arrow-right"></i></a></div></article>
-          <article class="service-card reveal"><div class="service-image"><img src="2.jpg" alt="Проектирование здания" loading="lazy"></div><div class="service-body"><span class="service-icon"><i class="fa-solid fa-compass-drafting"></i></span><h3>СРО проектировщиков</h3><p>Для бюро и компаний, которые разрабатывают проектную и сметную документацию.</p><ul class="service-list"><li><i class="fa-solid fa-check"></i>Оценим требования к договору</li><li><i class="fa-solid fa-check"></i>Поможем собрать пакет документов</li></ul><a class="service-link" href="#consultation">Узнать условия <i class="fa-solid fa-arrow-right"></i></a></div></article>
-          <article class="service-card reveal"><div class="service-image"><img src="3.jpg" alt="Инженерные изыскания на объекте" loading="lazy"></div><div class="service-body"><span class="service-icon"><i class="fa-solid fa-ruler-combined"></i></span><h3>СРО изыскателей</h3><p>Для организаций, выполняющих инженерные изыскания перед началом строительства.</p><ul class="service-list"><li><i class="fa-solid fa-check"></i>Уточним необходимые допуски</li><li><i class="fa-solid fa-check"></i>Сориентируем по взносам</li></ul><a class="service-link" href="#consultation">Узнать условия <i class="fa-solid fa-arrow-right"></i></a></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="value" aria-labelledby="value-title">
-      <div class="container value-grid">
-        <div class="value-statement reveal"><span class="eyebrow">Прозрачный процесс</span><h2 id="value-title">Не обещаем «допуск за час» — объясняем, что действительно нужно</h2><p>Вступление в СРО зависит от вида работ, уровня ответственности и комплекта документов. Наша задача — заранее снять неопределённость и провести вас по процессу.</p><div class="quote-note"><i class="fa-solid fa-circle-info"></i><span>Перед подачей вы видите состав обязательных платежей и план действий.</span></div></div>
-        <div class="value-list">
-          <article class="value-item reveal"><span class="value-number">01</span><div><h3>Диагностика вашей ситуации</h3><p>Уточняем виды работ, контрактные планы, регион и текущее состояние документов.</p></div></article>
-          <article class="value-item reveal"><span class="value-number">02</span><div><h3>Понятный расчёт до старта</h3><p>Разделяем обязательные взносы в СРО и услуги сопровождения — без неожиданностей в процессе.</p></div></article>
-          <article class="value-item reveal"><span class="value-number">03</span><div><h3>Проверка пакета документов</h3><p>Находим недостающие сведения до подачи, чтобы снизить риск задержек и повторных запросов.</p></div></article>
-          <article class="value-item reveal"><span class="value-number">04</span><div><h3>Сопровождение до результата</h3><p>Остаёмся на связи и координируем этапы оформления, пока вы занимаетесь своей работой.</p></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="process" id="process" aria-labelledby="process-title">
-      <div class="container">
-        <div class="process-top"><div class="section-heading reveal"><span class="eyebrow">Как работаем</span><h2 id="process-title">Четыре шага до оформления</h2><p>Без сложных личных кабинетов и длинной переписки: специалист держит процесс в одном понятном контуре.</p></div><p class="process-assurance"><i class="fa-solid fa-shield-halved"></i>Платежи в компенсационный фонд — напрямую на счёт СРО</p></div>
-        <div class="steps">
-          <article class="step reveal"><h3>Оставляете заявку</h3><p>Выбираете направление и удобный способ связи.</p></article>
-          <article class="step reveal"><h3>Обсуждаем задачу</h3><p>Проводим первичную оценку документов и требований.</p></article>
-          <article class="step reveal"><h3>Согласовываем смету</h3><p>Фиксируем план, состав платежей и дальнейшие сроки.</p></article>
-          <article class="step reveal"><h3>Сопровождаем подачу</h3><p>Помогаем пройти оформление и получить выписку из реестра.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="faq" id="faq" aria-labelledby="faq-title">
-      <div class="container faq-grid">
-        <aside class="faq-side reveal"><span class="eyebrow">Остались вопросы</span><h3>Разберём вашу ситуацию без сложных терминов</h3><p>Расскажите, какие работы планируете и когда нужен допуск. Подскажем, с чего начать.</p><a class="btn btn-primary" href="#consultation">Задать вопрос <i class="fa-solid fa-arrow-right"></i></a></aside>
-        <div class="faq-list reveal"><div class="section-heading"><span class="eyebrow">FAQ</span><h2 id="faq-title">Частые вопросы</h2></div>
-          <details open><summary>От чего зависит стоимость вступления в СРО?</summary><div class="answer"><p>На неё влияют выбранное направление, уровень ответственности, обязательные взносы и состояние вашего пакета документов. После первичной консультации можно подготовить расчёт именно для вашей ситуации.</p></div></details>
-          <details><summary>Можно ли вступить в СРО, если не хватает специалистов?</summary><div class="answer"><p>Сначала оценим, каких специалистов и сведений не хватает в вашем случае. После этого предложим допустимые варианты действий в рамках требований СРО и законодательства.</p></div></details>
-          <details><summary>Нужно ли приезжать в офис?</summary><div class="answer"><p>Формат работы зависит от конкретной ситуации и требований к документам. На первом созвоне согласуем самый удобный порядок взаимодействия.</p></div></details>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta" aria-labelledby="cta-title"><div class="container cta-inner"><div class="reveal"><span class="eyebrow">Первый шаг</span><h2 id="cta-title">Проверьте, какой вариант СРО подойдёт вашей компании</h2><p>Оставьте контакты — обсудим задачу, оценим документы и подготовим ориентир по обязательным платежам.</p></div><div class="cta-action reveal"><a class="btn btn-primary" href="#consultation">Получить расчёт <i class="fa-solid fa-arrow-right"></i></a><small>Консультация до начала работы — бесплатно</small></div></div></section>
-  </main>
-
-  <footer><div class="container"><div class="footer-grid"><div><a class="brand" href="#top"><span class="brand-mark"><i class="fa-solid fa-shield-halved"></i></span>СРО-Эксперт</a><p>Сопровождение строительных компаний при вступлении в СРО и подготовке документов.</p></div><div><div class="footer-title">Контакты</div><ul class="footer-list"><li><i class="fa-solid fa-phone"></i><a href="tel:88001234567">8 (800) 123-45-67</a></li><li><i class="fa-solid fa-envelope"></i><a href="mailto:info@sro-expert.ru">info@sro-expert.ru</a></li><li><i class="fa-solid fa-location-dot"></i>Москва, работаем по России</li></ul></div><div><div class="footer-title">Режим работы</div><ul class="footer-list"><li>Пн–Пт: 09:00–19:00</li><li>Заявки на сайте: 24/7</li><li><a href="#faq">Ответы на вопросы</a></li></ul></div></div><div class="footer-bottom"><span>© 2026 СРО-Эксперт. Информация на сайте не является публичной офертой.</span><a href="#">Политика конфиденциальности</a></div></div></footer>
-  <a class="mobile-cta" href="#consultation" aria-label="Получить расчёт"><i class="fa-solid fa-calculator"></i></a>
-  <script>
-    const form = document.querySelector('#lead-form');
-    form.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const success = form.querySelector('.form-success');
-      success.classList.add('show');
-      form.querySelector('button').textContent = 'Заявка отправлена';
-      form.querySelector('button').disabled = true;
+    // FAQ toggle
+    document.querySelectorAll('details').forEach(detail => {
+      const summary = detail.querySelector('summary');
+      if (summary) {
+        summary.addEventListener('click', (e) => {
+          e.preventDefault();
+          const isOpen = detail.hasAttribute('open');
+          // Close all others
+          document.querySelectorAll('details').forEach(d => d.removeAttribute('open'));
+          if (!isOpen) detail.setAttribute('open', '');
+        });
+      }
     });
-    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } }), { threshold: .12 });
-    document.querySelectorAll('.reveal').forEach((item) => observer.observe(item));
-  </script>
+</script>
 </body>
 </html>
